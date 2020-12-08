@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace StoreFront.UI
+namespace StoreFront.UI.MVC
 {
     public class FilterConfig
     {
