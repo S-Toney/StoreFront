@@ -5,7 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="WritersSupplyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Category">
+        <EntityType Name="Availability">
+          <Key>
+            <PropertyRef Name="AvailabilityID" />
+          </Key>
+          <Property Name="AvailabilityID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
@@ -121,11 +128,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Products_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+        <Association Name="FK_Products_Availability">
+          <End Role="Availability" Type="Self.Availability" Multiplicity="1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Category">
+            <Principal Role="Availability">
+              <PropertyRef Name="AvailabilityID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="Availability" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Category">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
               <PropertyRef Name="CategoryID" />
             </Principal>
             <Dependent Role="Products">
@@ -170,7 +189,8 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="WritersSupplyModelStoreContainer">
-          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Availability" EntityType="Self.Availability" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Manufacturers" EntityType="Self.Manufacturers" Schema="dbo" store:Type="Tables" />
@@ -190,8 +210,12 @@
             <End Role="Products" EntitySet="Products" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
+          <AssociationSet Name="FK_Products_Availability" Association="Self.FK_Products_Availability">
+            <End Role="Availability" EntitySet="Availability" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
           <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
-            <End Role="Category" EntitySet="Category" />
+            <End Role="Categories" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Products_Manufacturers" Association="Self.FK_Products_Manufacturers">
@@ -212,13 +236,21 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WritersSupplyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Availability">
+          <Key>
+            <PropertyRef Name="AvailabilityID" />
+          </Key>
+          <Property Name="AvailabilityID" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Availability" FromRole="Availability" ToRole="Products" />
+        </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <Property Name="CategoryName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Category" FromRole="Category" ToRole="Products" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Category" FromRole="Categories" ToRole="Products" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -283,7 +315,8 @@
           <Property Name="Size" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <Property Name="OS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Category" Relationship="Self.FK_Products_Category" FromRole="Products" ToRole="Category" />
+          <NavigationProperty Name="Availability1" Relationship="Self.FK_Products_Availability" FromRole="Products" ToRole="Availability" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Products_Category" FromRole="Products" ToRole="Categories" />
           <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Products_Manufacturers" FromRole="Products" ToRole="Manufacturers" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Products" FromRole="Products" ToRole="Orders" />
           <NavigationProperty Name="ProductWritingTypes" Relationship="Self.FK_ProductWritingTypes_Products" FromRole="Products" ToRole="ProductWritingTypes" />
@@ -306,11 +339,23 @@
           <Property Name="WTypeName" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="ProductWritingTypes" Relationship="Self.FK_ProductWritingTypes_WritingTypes" FromRole="WritingTypes" ToRole="ProductWritingTypes" />
         </EntityType>
-        <Association Name="FK_Products_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+        <Association Name="FK_Products_Availability">
+          <End Role="Availability" Type="Self.Availability" Multiplicity="1" />
           <End Role="Products" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Category">
+            <Principal Role="Availability">
+              <PropertyRef Name="AvailabilityID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="Availability" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Category">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
               <PropertyRef Name="CategoryID" />
             </Principal>
             <Dependent Role="Products">
@@ -390,7 +435,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="WritersSupplyEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="WritersSupplyEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Availabilities" EntityType="Self.Availability" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="Employees" EntityType="Self.Employee" />
@@ -399,8 +445,12 @@
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="ProductWritingTypes" EntityType="Self.ProductWritingType" />
           <EntitySet Name="WritingTypes" EntityType="Self.WritingType" />
+          <AssociationSet Name="FK_Products_Availability" Association="Self.FK_Products_Availability">
+            <End Role="Availability" EntitySet="Availabilities" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
           <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
-            <End Role="Category" EntitySet="Categories" />
+            <End Role="Categories" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Employees_Departments" Association="Self.FK_Employees_Departments">
@@ -433,10 +483,18 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WritersSupplyModelStoreContainer" CdmEntityContainer="WritersSupplyEntities1">
+        <EntityContainerMapping StorageEntityContainer="WritersSupplyModelStoreContainer" CdmEntityContainer="WritersSupplyEntities2">
+          <EntitySetMapping Name="Availabilities">
+            <EntityTypeMapping TypeName="WritersSupplyModel.Availability">
+              <MappingFragment StoreEntitySet="Availability">
+                <ScalarProperty Name="AvailabilityID" ColumnName="AvailabilityID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="WritersSupplyModel.Category">
-              <MappingFragment StoreEntitySet="Category">
+              <MappingFragment StoreEntitySet="Categories">
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
               </MappingFragment>

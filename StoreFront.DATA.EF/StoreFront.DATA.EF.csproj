@@ -50,72 +50,75 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Availability.cs">
+      <DependentUpon>WritersSupplyModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Category.cs">
-      <DependentUpon>WritesSupplyModel.tt</DependentUpon>
+      <DependentUpon>WritersSupplyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Department.cs">
-      <DependentUpon>WritesSupplyModel.tt</DependentUpon>
+      <DependentUpon>WritersSupplyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs">
-      <DependentUpon>WritesSupplyModel.tt</DependentUpon>
+      <DependentUpon>WritersSupplyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Manufacturer.cs">
-      <DependentUpon>WritesSupplyModel.tt</DependentUpon>
+      <DependentUpon>WritersSupplyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Metadata\StoreFrontMetadata.cs" />
     <Compile Include="Order.cs">
-      <DependentUpon>WritesSupplyModel.tt</DependentUpon>
+      <DependentUpon>WritersSupplyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">
-      <DependentUpon>WritesSupplyModel.tt</DependentUpon>
+      <DependentUpon>WritersSupplyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductWritingType.cs">
-      <DependentUpon>WritesSupplyModel.tt</DependentUpon>
+      <DependentUpon>WritersSupplyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WritesSupplyModel.Context.cs">
+    <Compile Include="WritersSupplyModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WritesSupplyModel.Context.tt</DependentUpon>
+      <DependentUpon>WritersSupplyModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="WritesSupplyModel.cs">
+    <Compile Include="WritersSupplyModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WritesSupplyModel.tt</DependentUpon>
+      <DependentUpon>WritersSupplyModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="WritesSupplyModel.Designer.cs">
+    <Compile Include="WritersSupplyModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WritesSupplyModel.edmx</DependentUpon>
+      <DependentUpon>WritersSupplyModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="WritingType.cs">
-      <DependentUpon>WritesSupplyModel.tt</DependentUpon>
+      <DependentUpon>WritersSupplyModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="WritesSupplyModel.edmx">
+    <EntityDeploy Include="WritersSupplyModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WritesSupplyModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>WritersSupplyModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="WritesSupplyModel.edmx.diagram">
-      <DependentUpon>WritesSupplyModel.edmx</DependentUpon>
+    <None Include="WritersSupplyModel.edmx.diagram">
+      <DependentUpon>WritersSupplyModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WritesSupplyModel.Context.tt">
+    <Content Include="WritersSupplyModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WritesSupplyModel.edmx</DependentUpon>
-      <LastGenOutput>WritesSupplyModel.Context.cs</LastGenOutput>
+      <DependentUpon>WritersSupplyModel.edmx</DependentUpon>
+      <LastGenOutput>WritersSupplyModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="WritesSupplyModel.tt">
+    <Content Include="WritersSupplyModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WritesSupplyModel.edmx</DependentUpon>
-      <LastGenOutput>WritesSupplyModel.cs</LastGenOutput>
+      <DependentUpon>WritersSupplyModel.edmx</DependentUpon>
+      <LastGenOutput>WritersSupplyModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

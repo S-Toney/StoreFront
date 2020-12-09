@@ -13,10 +13,10 @@ namespace StoreFront.DATA.EF
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WritersSupplyEntities1 : DbContext
+    public partial class WritersSupplyEntities2 : DbContext
     {
-        public WritersSupplyEntities1()
-            : base("name=WritersSupplyEntities1")
+        public WritersSupplyEntities2()
+            : base("name=WritersSupplyEntities2")
         {
         }
     
@@ -25,6 +25,7 @@ namespace StoreFront.DATA.EF
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Availability> Availabilities { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
