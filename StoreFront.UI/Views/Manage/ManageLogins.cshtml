@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Manage your external logins";
 }
-
+@* There are notes and variations provided in the template but they need to be translated before I can use them. If this works - will use this. Reference link is in the notes: https://go.microsoft.com/fwlink/?LinkId=313242 *@
 <h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
@@ -47,12 +47,12 @@
     {
         @Html.AntiForgeryToken()
         <div id="socialLoginList">
-        <p>
-            @foreach (AuthenticationDescription p in Model.OtherLogins)
-            {
-                <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
-            }
-        </p>
+            <p>
+                @foreach (AuthenticationDescription p in Model.OtherLogins)
+                {
+                    <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+                }
+            </p>
         </div>
     }
 }
