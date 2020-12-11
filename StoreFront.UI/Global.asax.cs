@@ -1,4 +1,7 @@
-﻿using StoreFront.UI.MVC.Models;
+﻿using System;//Added from template
+using System.Collections.Generic;//Added from template
+using System.Linq;//Added from template
+using StoreFront.UI.MVC.Models;
 using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Optimization;
