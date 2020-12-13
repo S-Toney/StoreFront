@@ -7,6 +7,7 @@ namespace StoreFront.UI.MVC.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            ViewBag.RenderCarousel = true;
             return View();
         }
 
@@ -14,28 +15,28 @@ namespace StoreFront.UI.MVC.Controllers
         [Authorize]
         public ActionResult About()
         {
-
+            ViewBag.RenderCarousel = true;
             return View();
         }
 
         [HttpGet]
         public ActionResult Contact()
         {
-
+            ViewBag.RenderCarousel = true;
             return View();
         }
 
         [HttpGet]
         public ActionResult Checkout()
-        {      
-
+        {
+            ViewBag.RenderCarousel = true;
             return View();
         }
 
         [HttpGet]
         public ActionResult Products()
         {
-
+            ViewBag.RenderCarousel = true;
             return View();
         }
     }
