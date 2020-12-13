@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -12,6 +13,9 @@ namespace StoreFront.UI.MVC.Controllers
     [Authorize]
     public class ManageController : Controller
     {
+        //private ApplicationSignInManager _signInManager;
+        //private ApplicationUserManager _userManager;
+
         public ManageController()
         {
         }
@@ -19,7 +23,22 @@ namespace StoreFront.UI.MVC.Controllers
         public ManageController(ApplicationUserManager userManager)
         {
             UserManager = userManager;
+         // SignInManager = signInManager;
         }
+
+        /*
+          public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set 
+            { 
+                _signInManager = value; 
+            }
+        }
+        */
 
         private ApplicationUserManager _userManager;
         public ApplicationUserManager UserManager
@@ -181,6 +200,38 @@ namespace StoreFront.UI.MVC.Controllers
         }
 
         //
+        // POST: /Manage/EnableTwoFactorAuthentication
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> EnableTwoFactorAuthentication()
+        //{
+        //    await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), true);
+        //    var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+        //    if (user != null)
+        //    {
+        //        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+        //    }
+        //    return RedirectToAction("Index", "Manage");
+        //}
+
+        ////
+        //// POST: /Manage/DisableTwoFactorAuthentication
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> DisableTwoFactorAuthentication()
+        //{
+        //    await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), false);
+        //    var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+        //    if (user != null)
+        //    {
+        //        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+        //    }
+        //    return RedirectToAction("Index", "Manage");
+        //}
+
+
+
+        //
         // GET: /Account/VerifyPhoneNumber
         [HttpGet]
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
@@ -202,6 +253,19 @@ namespace StoreFront.UI.MVC.Controllers
             {
                 return View(model);
             }
+            /*
+             TEMPLATE VERSION
+             var result = await UserManager.ChangePhoneNumberAsync(User.Identity.GetUserId(), model.PhoneNumber, model.Code);
+            if (result.Succeeded)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                if (user != null)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                }
+                return RedirectToAction("Index", new { Message = ManageMessageId.AddPhoneSuccess });
+            }
+             */
             var userId = User.Identity.GetUserId();
             var result = await UserManager.ChangePhoneNumberAsync(userId, model.PhoneNumber, model.Code);
             if (result.Succeeded)
@@ -229,6 +293,7 @@ namespace StoreFront.UI.MVC.Controllers
             {
                 return RedirectToAction("Index", new { Message = ManageMessageId.Error });
             }
+            //userId in this code is called as (User.Identity.GetUserId()) in template
             var user = await UserManager.FindByIdAsync(userId);
             if (user != null)
             {
@@ -314,6 +379,7 @@ namespace StoreFront.UI.MVC.Controllers
                 : "";
             var userId = User.Identity.GetUserId();
             var user = await UserManager.FindByIdAsync(userId);
+            //var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user == null)
             {
                 return View("Error");
@@ -351,6 +417,19 @@ namespace StoreFront.UI.MVC.Controllers
             var result = await UserManager.AddLoginAsync(userId, loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
+
+        /*
+             protected override void Dispose(bool disposing)
+        {
+            if (disposing && _userManager != null)
+            {
+                _userManager.Dispose();
+                _userManager = null;
+            }
+
+            base.Dispose(disposing);
+        }
+        */
 
         #region Helpers
         // Used for XSRF protection when adding external logins

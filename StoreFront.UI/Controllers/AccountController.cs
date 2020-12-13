@@ -214,6 +214,12 @@ namespace StoreFront.UI.MVC.Controllers
                 ViewBag.Link = callbackUrl;
                 return View("ForgotPasswordConfirmation");
             }
+            // For more information on enabling account confirmation and password reset, visit https://go.microsoft.com/fwlink/?LinkID=320771
+            // Send email with this link
+            // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+            // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+            // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Click to Reset Password <a href=\"" + callbackUrl + "\">aquí</a>");
+            // return RedirectToAction("ForgotPasswordConfirmation", "Account");
 
             // If we got this far, something failed, redisplay form
             return View(model);
@@ -396,6 +402,8 @@ namespace StoreFront.UI.MVC.Controllers
         {
             AuthenticationManager.SignOut();
             return RedirectToAction("Index", "Home");
+            //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            //return RedirectToAction("Index", "Home");
         }
 
         //
@@ -406,6 +414,28 @@ namespace StoreFront.UI.MVC.Controllers
         {
             return View();
         }
+        /*
+          protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_userManager != null)
+                {
+                    _userManager.Dispose();
+                    _userManager = null;
+                }
+
+                if (_signInManager != null)
+                {
+                    _signInManager.Dispose();
+                    _signInManager = null;
+                }
+            }
+
+            base.Dispose(disposing);
+        }
+        */
+
 
         #region Helpers
         // Used for XSRF protection when adding external logins
