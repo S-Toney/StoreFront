@@ -21,7 +21,7 @@ namespace StoreFront.UI.MVC.Controllers
             UserManager = userManager;
             SignInManager = signInManager;
         }
-
+        //Template has a _sinInManager ?? HttpContect.GetOwinContent too
         private ApplicationUserManager _userManager;
         public ApplicationUserManager UserManager
         {
