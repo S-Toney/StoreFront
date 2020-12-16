@@ -13,10 +13,10 @@ namespace StoreFront.DATA.EF
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WritersSupplyEntities2 : DbContext
+    public partial class WritersSupplyEntities : DbContext
     {
-        public WritersSupplyEntities2()
-            : base("name=WritersSupplyEntities2")
+        public WritersSupplyEntities()
+            : base("name=WritersSupplyEntities")
         {
         }
     

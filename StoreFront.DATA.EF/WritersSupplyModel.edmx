@@ -435,7 +435,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="WritersSupplyEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="WritersSupplyEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Availabilities" EntityType="Self.Availability" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
@@ -483,7 +483,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WritersSupplyModelStoreContainer" CdmEntityContainer="WritersSupplyEntities2">
+        <EntityContainerMapping StorageEntityContainer="WritersSupplyModelStoreContainer" CdmEntityContainer="WritersSupplyEntities">
           <EntitySetMapping Name="Availabilities">
             <EntityTypeMapping TypeName="WritersSupplyModel.Availability">
               <MappingFragment StoreEntitySet="Availability">
