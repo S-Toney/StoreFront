@@ -94,7 +94,8 @@
     {
         @Html.Partial("_CarouselPartial")
     }
-    @RenderBody()
+    <div class="container-fluid">@RenderBody()</div>
+   
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
