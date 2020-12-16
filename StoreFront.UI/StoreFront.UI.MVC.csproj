@@ -176,6 +176,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ProductWritingTypesController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
@@ -296,6 +298,16 @@
     <Content Include="Views\Home\Checkout.cshtml" />
     <Content Include="Views\Home\Products.cshtml" />
     <Content Include="Views\Shared\_CarouselPartial.cshtml" />
+    <Content Include="Views\ProductWritingTypes\Create.cshtml" />
+    <Content Include="Views\ProductWritingTypes\Delete.cshtml" />
+    <Content Include="Views\ProductWritingTypes\Details.cshtml" />
+    <Content Include="Views\ProductWritingTypes\Edit.cshtml" />
+    <Content Include="Views\ProductWritingTypes\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
