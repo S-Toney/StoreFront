@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using StoreFront.DATA.EF;
+using System.Drawing; //Image
+using StoreFront.UI.MVC.Models;
+using StoreFront.UI.Utilities;//Gives us access to the ImaveService.cs
 
 namespace StoreFront.UI.Controllers
 {
@@ -36,6 +39,8 @@ namespace StoreFront.UI.Controllers
             return View(product);
         }
 
+        //TODO Add to Cart Functionality - Step 3
+
         // GET: Products/Create
         public ActionResult Create()
         {
@@ -50,10 +55,38 @@ namespace StoreFront.UI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,ProductName,ManufacturerID,Price,Availability,Description,Image,Size,CategoryID,OS")] Product product)
+        public ActionResult Create([Bind(Include = "ProductID,ProductName,ManufacturerID,Price,Availability,Description,Image,Size,CategoryID,OS")] Product product, HttpPostedFileBase productImg)
         {
             if (ModelState.IsValid)
             {
+                #region File Upload
+                //TODONE File Upload
+                string file = "NoImage.png";
+
+                if (productImg != null)
+                {
+                    file = productImg.FileName;
+                    string ext = file.Substring(file.LastIndexOf('.'));
+                    string[] goodExts = { ".jpeg", ".jpg", ".png", ".gif" };
+
+                    if (goodExts.Contains(ext))
+                    {
+                        if (productImg.ContentLength <= 4194304)
+                        {
+                            file = Guid.NewGuid() + ext;
+
+                            #region Resize Image
+                            string savePath = Server.MapPath("~/Content/img/");
+                            Image convertedImage = Image.FromStream(productImg.InputStream);
+                            int maxImageSize = 500;
+                            int maxThumbSize = 100;
+                            ImageService.ResizeImage(savePath, file, convertedImage, maxImageSize, maxThumbSize);
+                            #endregion
+                        }
+                        product.Image = file;
+                    }
+                }
+                #endregion
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -88,10 +121,44 @@ namespace StoreFront.UI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,ProductName,ManufacturerID,Price,Availability,Description,Image,Size,CategoryID,OS")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductID,ProductName,ManufacturerID,Price,Availability,Description,Image,Size,CategoryID,OS")] Product product, HttpPostedFileBase productImg)
         {
             if (ModelState.IsValid)
             {
+                #region File Upload
+                //TODONE File Upload
+                string file = "NoImage.png";
+                if (productImg != null)
+                {
+                    file = product.Image;
+                    string ext = file.Substring(file.LastIndexOf(','));
+                    string[] goodExts = { ".jpeg", ".jpg", ".png", ".gif" };
+                    if (goodExts.Contains(ext))
+                    {
+                        if (productImg.ContentLength <= 4194304)
+                        {
+                            file = Guid.NewGuid() + ext;
+
+                            #region Resize Image
+                            string savePath = Server.MapPath("~/Content/ing/");
+                            Image convertedImage = Image.FromStream(productImg.InputStream);
+
+                            int maxImageSize = 500;
+                            int maxThumbSize = 100;
+
+                            ImageService.ResizeImage(savePath, file, convertedImage, maxImageSize, maxThumbSize);
+                            #endregion
+
+                            if (product.Image != null && product.Image != "NoImage.png")
+                            {
+                                string path = Server.MapPath("~/Content/img/");
+                                ImageService.Delete(path, product.Image);
+                            }
+                        }
+                        product.Image = file;
+                    }
+                }
+                #endregion
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -123,6 +190,9 @@ namespace StoreFront.UI.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Products.Find(id);
+            //TODONE ImageService Code for Delete
+            string path = Server.MapPath("~/Content/img/");
+            ImageService.Delete(path, product.Image);
             db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
