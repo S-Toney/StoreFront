@@ -3,98 +3,185 @@
 @{
     ViewBag.Title = "Product Details";
 }
+<!-- #region Scaffolded Details -->
+@*<h2>@ViewBag.Title</h2>
 
-<h2>@ViewBag.Title</h2>
+            <div>
 
-<div>
+                <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ProductName)
+                        </dt>
 
+                        <dd>
+                            @Html.DisplayFor(model => model.ProductName)
+                        </dd>
 
-    <!-- #region Scaffolded Details -->
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Price)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Image)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Image)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Size)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Size)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.OS)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Size)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.OS)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OS)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Availability1.Status)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OS)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Availability1.Status)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Availability1.Status)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Category.CategoryName)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Availability1.Status)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Category.CategoryName)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.CategoryName)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Manufacturer.ManufacturerName)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Category.CategoryName)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Manufacturer.ManufacturerName)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Manufacturer.ManufacturerName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Manufacturer.ManufacturerName)
-        </dd>
-
-    </dl>
+                    </dl>
+        <p>@*TODO Add to Cart Functionality - Step 2</p>
+    </div>
+    <div class="col-md-6">
+        <img src="~/Content/img/@Model.Image" alt="@Model.ProductName" title="@Model.ProductName" />
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
     <!-- #endregion -->
-    
-
-
-    <p>@*TODO Add to Cart Functionality - Step 2*@</p>
-
-</div>
-<div class="col-md-6">
-    <img src="~/Content/img/@Model.Image Image" alt="@Model.ProductName" title="@Model.ProductName"/>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <!-- #region Adjusted Template Details -->
+    <!--Main layout-->
+    <main class="mt-5 pt-4">
+        <div class="container dark-grey-text mt-5">
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+                <!--Grid column-->
+                <div class="col-md-6 mb-4">
+                    <img src="~/Content/img/@Model.Image" alt="@Model.ProductName" title="@Model.ProductName" class="img-fluid" />
+                    @*<img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg"  alt="">*@
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-md-6 mb-4">
+                    <!--Content-->
+                    <div class="p-4">
+                        <h1>@Html.DisplayFor(model => model.ProductName)</h1>
+                        <div class="mb-3">
+                            <a href="">
+                                <span class="badge purple mr-1"> @*@Html.DisplayNameFor(model => model.Category.CategoryName)*@ @Html.DisplayFor(model => model.Category.CategoryName)</span>
+                            </a>
+                            <a href="">
+                                <span class="badge blue mr-1">@*@Html.DisplayNameFor(model => model.Availability1.Status)*@ @Html.DisplayFor(model => model.Availability1.Status)</span>
+                            </a>
+                            <a href="">
+                                <span class="badge red mr-1">@Html.DisplayFor(model => model.Manufacturer.ManufacturerName)</span>
+                            </a>
+                        </div>
+                        <p class="lead">
+                            <span class="mr-1">
+                                @*<del>$200</del>*@
+                            </span>
+                            <span>$@Html.DisplayFor(model => model.Price)</span>
+                        </p>
+                        <p class="lead font-weight-bold">Description</p>
+                        <p>
+                            @Html.DisplayFor(model => model.Description)
+                        </p>
+                        <form class="d-flex justify-content-left">
+                            <!-- Default input -->
+                            @*TODO Add to Cart Functionality - Step 2*@
+                            <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
+                            <button class="btn btn-primary btn-md my-0 p" type="submit">
+                                Add to cart
+                                <i class="fas fa-shopping-cart ml-1"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <!--Content-->
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+            <hr>
+            <!--Grid row-->
+            <div class="row d-flex justify-content-center wow fadeIn">
+                <!--Grid column-->
+                <div class="col-md-6 text-center">
+                    <h4 class="my-4 h4">Additional information</h4>
+                    <p>
+                        This will either be related items or products available from the same manufacturer...Related items would make more sense so...other items in the same Category?
+                    </p>
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </main>
+    <!--Main layout-->
+    <!-- #endregion -->
