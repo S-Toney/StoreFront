@@ -1,4 +1,5 @@
-﻿<!--Main layout-->
+﻿@model StoreFront.DATA.EF.Product
+<!--Main layout-->
 <main class="mt-5 pt-4">
     <div class="container dark-grey-text mt-5">
         <!--Grid row-->
@@ -14,26 +15,24 @@
                 <div class="p-4">
                     <div class="mb-3">
                         <a href="">
-                            <span class="badge purple mr-1">Category 2</span>
+                            <span class="badge purple mr-1">@Html.DisplayNameFor(model => model.Category)</span>
                         </a>
                         <a href="">
-                            <span class="badge blue mr-1">New</span>
+                            <span class="badge blue mr-1">@Html.DisplayNameFor(model => model.Availability1)</span>
                         </a>
                         <a href="">
-                            <span class="badge red mr-1">Bestseller</span>
+                            <span class="badge red mr-1">@Html.DisplayNameFor(model => model.Availability)</span>
                         </a>
                     </div>
                     <p class="lead">
                         <span class="mr-1">
-                            <del>$200</del>
+                            @*<del>$200</del>*@
                         </span>
-                        <span>$100</span>
+                        <span>@Html.DisplayNameFor(model => model.Price)</span>
                     </p>
                     <p class="lead font-weight-bold">Description</p>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa
-                        sint voluptatibus!
-                        Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.
+                        @Html.DisplayNameFor(model => model.Description)
                     </p>
                     <form class="d-flex justify-content-left">
                         <!-- Default input -->

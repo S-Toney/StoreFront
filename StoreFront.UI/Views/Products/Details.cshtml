@@ -7,8 +7,9 @@
 <h2>@ViewBag.Title</h2>
 
 <div>
-    <h4>Product</h4>
-    <hr />
+
+
+    <!-- #region Scaffolded Details -->
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.ProductName)
@@ -83,7 +84,12 @@
         </dd>
 
     </dl>
+    <!-- #endregion -->
+    
+
+
     <p>@*TODO Add to Cart Functionality - Step 2*@</p>
+
 </div>
 <div class="col-md-6">
     <img src="~/Content/img/@Model.Image Image" alt="@Model.ProductName" title="@Model.ProductName"/>
