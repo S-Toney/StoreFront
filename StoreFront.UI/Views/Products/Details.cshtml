@@ -1,10 +1,10 @@
 ﻿@model StoreFront.DATA.EF.Product
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Product Details";
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Title</h2>
 
 <div>
     <h4>Product</h4>
@@ -83,6 +83,10 @@
         </dd>
 
     </dl>
+    <p>@*TODO Add to Cart Functionality - Step 2*@</p>
+</div>
+<div class="col-md-6">
+    <img src="~/Content/img/@Model.Image Image" alt="@Model.ProductName" title="@Model.ProductName"/>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |

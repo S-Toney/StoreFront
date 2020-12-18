@@ -9,7 +9,8 @@ using System.Web.Mvc;
 using StoreFront.DATA.EF;
 using System.Drawing; //Image
 using StoreFront.UI.MVC.Models;
-using StoreFront.UI.Utilities;//Gives us access to the ImaveService.cs
+using StoreFront.UI.Utilities;//Gives us access to the ImageService.cs
+
 
 namespace StoreFront.UI.Controllers
 {
@@ -130,8 +131,8 @@ namespace StoreFront.UI.Controllers
                 string file = "NoImage.png";
                 if (productImg != null)
                 {
-                    file = product.Image;
-                    string ext = file.Substring(file.LastIndexOf(','));
+                    file = productImg.FileName;
+                    string ext = file.Substring(file.LastIndexOf('.'));
                     string[] goodExts = { ".jpeg", ".jpg", ".png", ".gif" };
                     if (goodExts.Contains(ext))
                     {

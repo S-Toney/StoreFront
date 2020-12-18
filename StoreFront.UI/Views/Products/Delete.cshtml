@@ -1,10 +1,10 @@
 ﻿@model StoreFront.DATA.EF.Product
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete A Product";
 }
 
-<h2>Delete</h2>
+<h2>@ViewBag.Title</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -40,7 +40,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Image)
+            @*@Html.DisplayFor(model => model.Image)*@
+            <img src="~/Content/img/@Model.Image"/>
         </dd>
 
         <dt>
