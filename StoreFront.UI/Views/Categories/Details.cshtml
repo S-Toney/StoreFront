@@ -1,0 +1,44 @@
+﻿@model StoreFront.DATA.EF.Category
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+@{
+        StoreFront.DATA.EF.WritersSupplyEntities ws = new StoreFront.DATA.EF.WritersSupplyEntities();
+
+        var totalProducts = from p in ws.Products
+                            where ws.Categories is CategoryName
+                            select p;
+
+    }
+
+
+
+<div>
+    <h4>@Html.DisplayFor(model => model.CategoryName)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @model.
+        </dt>
+
+        <dd>
+
+        </dd>
+
+        </dd>
+    </dl>
+</div>
+
+@*<p>
+        @foreach (var c in Category)
+        {
+
+        }
+    </p>*@
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
