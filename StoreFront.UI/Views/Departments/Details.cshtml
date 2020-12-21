@@ -1,0 +1,34 @@
+﻿@model StoreFront.DATA.EF.Department
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="p-2">
+    <h2 class="mt-5">@Html.DisplayFor(model => model.DaptName)</h2>
+
+    <div>
+
+        <table class="table">
+            <th>Employee</th>
+            <th>City</th>
+            <th>State</th>
+            @foreach (var item in Model.Employees)
+            {
+                <tr>
+                    <td><a href="@Url.Action("Details", "Employees", new { id = item.EmployeeID})">@item.EmpFName @item.EmpLName</a></td>
+                    <td>@item.EmpCity</td>
+                    <td>@item.EmpState</td>
+                </tr>
+            }
+            <dd>
+
+            </dd>
+
+        </table>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.DeptID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
