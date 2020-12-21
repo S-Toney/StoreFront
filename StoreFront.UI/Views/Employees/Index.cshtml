@@ -1,0 +1,71 @@
+﻿@model IEnumerable<StoreFront.DATA.EF.Employee>
+
+@{
+    ViewBag.Title = "Employees";
+}
+
+<div class="p-2">
+    <h2 class="mt-5">@ViewBag.Title</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Employee
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+               State
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                Department
+            </th>
+            <th>
+                Manager
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><a href="@Url.Action("Details", "Employees", new { id = item.EmployeeID })">
+                        @Html.DisplayFor(modelItem => item.EmpFName) 
+                        @Html.DisplayFor(modelItem => item.EmpLName)
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpCity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpState)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpCountry)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.DaptName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee1.EmpFName)
+                </td>
+                <td><a href="@Url.Action("Edit", "Employees", new { id = item.EmployeeID })"><i class="fas fa-edit mr-2"></i></a>  
+                    <a href="@Url.Action("Delete", "Employees", new { id = item.EmployeeID})"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
