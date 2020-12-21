@@ -1,0 +1,33 @@
+﻿@model IEnumerable<StoreFront.DATA.EF.Manufacturer>
+
+@{
+    ViewBag.Title = "Maunfacturers";
+}
+
+<div class="p-2">
+    <h2 class="mt-5">@ViewBag.Title</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>Manufacturer</th>
+            <th># of Products</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("Edit", "Manufacturers" , new { id=item.ManufacturerID })">@Html.DisplayFor(modelItem => item.ManufacturerName)</a>
+                </td>
+                <td><a href="@Url.Action("Details", "Manufacturers", new { id = item.ManufacturerID})">@item.Products.Count()</a></td>
+                <td>
+                    <a href="@Url.Action("Delete", "Manufacturer", new { id = item.ManufacturerID})"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

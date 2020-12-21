@@ -1,0 +1,23 @@
+﻿@model StoreFront.DATA.EF.Manufacturer
+
+@{
+    ViewBag.Title = "Manufacturer Details";
+}
+
+<div class="p-2">
+    <h2 class="mt-5">@Html.DisplayFor(model => model.ManufacturerName)</h2>
+    <div>
+        <ol class="dl-horizontal">
+            @foreach (var item in Model.Products)
+            {
+                <li>
+                    <a href="@Url.Action("Details", "Products", new { id = Model.ManufacturerID})">@item.ProductName</a>
+                </li>
+            }
+        </ol>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ManufacturerID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
