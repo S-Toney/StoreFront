@@ -3,35 +3,35 @@
 @{
     ViewBag.Title = "Categories";
 }
-
 @*@{
-    StoreFront.DATA.EF.WritersSupplyEntities ws = new StoreFront.DATA.EF.WritersSupplyEntities();
+        StoreFront.DATA.EF.WritersSupplyEntities ws = new StoreFront.DATA.EF.WritersSupplyEntities();
 
-    var totalProducts = from p in ws.Products
-                        where ws.Categories is item.CategoryName
-                        select p;
-}*@
+        var totalProducts = from p in ws.Products
+                            where ws.Categories is item.CategoryName
+                            select p;
+    }*@
 
-
+<div class="p-2">
     <h2 class="mt-5">@ViewBag.Title</h2>
-
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
+
     <table class="table">
         @foreach (var item in Model)
         {
             <tr>
                 <td>
-                    <a href="">@Html.DisplayFor(modelItem => item.CategoryName)</a>
+                    <a href="@Url.Action("Edit", "Categories", new { id = item.CategoryID })">@Html.DisplayFor(modelItem => item.CategoryName)</a>
                 </td>
-                <td><a href="@Url.Action("Details", "Categories", new { id = item.CategoryID})">@item.Products.Count()</a></td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CategoryID }) |
-                    <a @Html.ActionLink("Details", "Details", new { id = item.CategoryID })>@item.Products.Count()</a> |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CategoryID })
+                    <a href="@Url.Action("Details", "Categories", new { id = item.CategoryID})">@item.Products.Count()</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("Delete", "Categories", new { id = item.CategoryID })"><i class='fas fa-trash-alt'></i></a>
                 </td>
             </tr>
         }
-
     </table>
+
+</div>

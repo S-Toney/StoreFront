@@ -20,7 +20,7 @@ namespace StoreFront.UI.Controllers
             return View(db.Categories.ToList());
         }
 
-    
+
 
         // GET: Categories/Details/5
         public ActionResult Details(int? id)
@@ -34,6 +34,7 @@ namespace StoreFront.UI.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(category);
         }
 

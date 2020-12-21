@@ -4,82 +4,85 @@
     ViewBag.Title = "Index";
 }
 
-<h2 class="mt-4">@ViewBag.Title</h2>
+<div class="p-2">
+    <h2 class="mt-4">@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Size)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Availability1.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category.CategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Manufacturer.ManufacturerName)
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr class="text-center">
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Availability1.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacturer.ManufacturerName)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @*TODONE ImagerService*@
-            @*@Html.DisplayFor(modelItem => item.Image)*@
-            <img src="~/Content/img/t_@item.Image" alt="@item.ProductName Image" title="@item.ProductName" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Size)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Availability1.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.CategoryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Manufacturer.ManufacturerName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductID }) 
-            @*TODO FontAwesome Icon not showing up*@
-            <a href="@Url.Action("Details", "Products", new { id = item.ProductID })"><i class="fas fa-folder-open-o" aria-hidden="true"></i></a> |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @*TODONE ImagerService*@
+                    @*@Html.DisplayFor(modelItem => item.Image)*@
+                    <img src="~/Content/img/t_@item.Image" alt="@item.ProductName Image" title="@item.ProductName" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Availability1.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer.ManufacturerName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductID })
+                    @*TODO FontAwesome Icon not showing up*@
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID })"><i class="fas fa-folder-open-o" aria-hidden="true"></i></a> |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>
