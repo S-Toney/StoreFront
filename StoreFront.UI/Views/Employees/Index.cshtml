@@ -61,7 +61,8 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Employee1.EmpFName)
                 </td>
-                <td><a href="@Url.Action("Edit", "Employees", new { id = item.EmployeeID })"><i class="fas fa-edit mr-2"></i></a>  
+                <td>
+                    <a href="@Url.Action("Edit", "Employees", new { id = item.EmployeeID })"><i class="fas fa-edit mr-2"></i></a>  
                     <a href="@Url.Action("Delete", "Employees", new { id = item.EmployeeID})"><i class="fas fa-trash-alt"></i></a>
                 </td>
             </tr>
