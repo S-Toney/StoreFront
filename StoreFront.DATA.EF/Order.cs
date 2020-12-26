@@ -15,9 +15,9 @@ namespace StoreFront.DATA.EF
     public partial class Order
     {
         public string C_First_Name { get; set; }
-        public byte[] C_Last_Name { get; set; }
+        public string C_Last_Name { get; set; }
         public string C_Address { get; set; }
-        public byte[] C_City { get; set; }
+        public string C_City { get; set; }
         public string C_State { get; set; }
         public string C_Country { get; set; }
         public int OrderID { get; set; }

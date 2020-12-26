@@ -10,7 +10,7 @@ using StoreFront.DATA.EF;
 using System.Drawing; //Image
 using StoreFront.UI.MVC.Models;
 using StoreFront.UI.Utilities;//Gives us access to the ImageService.cs
-
+using StoreFront.UI.Models;
 
 namespace StoreFront.UI.Controllers
 {
@@ -40,7 +40,42 @@ namespace StoreFront.UI.Controllers
             return View(product);
         }
 
-        //TODO Add to Cart Functionality - Step 3
+        //TODONE Add to Cart Functionality - Step 3
+        public ActionResult AddToCart(int qty, int productID)
+        {
+            Dictionary<int, CartItemViewModel> shoppingCart = null;
+            if (Session["cart"] != null)
+            {
+                shoppingCart = (Dictionary<int, CartItemViewModel>)Session["cart"];
+            }
+            else
+            {
+                shoppingCart = new Dictionary<int, CartItemViewModel>();
+            }
+
+            Product product = db.Products.Where(p => p.ProductID == productID).FirstOrDefault();
+            if (product == null)
+            {
+                return RedirectToAction("Index:");
+            }
+            else
+            {
+                CartItemViewModel item = new CartItemViewModel(qty, product);
+                if (shoppingCart.ContainsKey(product.ProductID))
+                {
+                    shoppingCart[product.ProductID].Qty += qty;
+                }
+                else
+                {
+                    shoppingCart.Add(product.ProductID, item);
+                }
+                Session["cart"] = shoppingCart;
+
+                Session["confirm"] = $"'{product.ProductName}' (Quantity: {qty}) added to cart";
+            }
+
+            return RedirectToAction("Index", "ShoppingCart");
+        }
 
         // GET: Products/Create
         public ActionResult Create()
