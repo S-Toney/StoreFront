@@ -48,7 +48,7 @@ namespace StoreFront.UI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "C_First_Name,C_Last_Name,C_Address,C_City,C_State,C_Country,OrderID,CustoemrID,Total,Product_ID")] Order order)
+        public ActionResult Create([Bind(Include = "C_First_Name,C_Last_Name,C_Address,C_City,C_State,C_Country,OrderID,CustomerID,Total,Product_ID")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace StoreFront.UI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "C_First_Name,C_Last_Name,C_Address,C_City,C_State,C_Country,OrderID,CustoemrID,Total,Product_ID")] Order order)
+        public ActionResult Edit([Bind(Include = "C_First_Name,C_Last_Name,C_Address,C_City,C_State,C_Country,OrderID,CustomerID,Total,Product_ID")] Order order)
         {
             if (ModelState.IsValid)
             {

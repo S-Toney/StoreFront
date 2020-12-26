@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WritersSupplyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WritersSupplyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Availability">
           <Key>
             <PropertyRef Name="AvailabilityID" />
@@ -52,13 +52,13 @@
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="C First Name" Type="varchar" MaxLength="50" />
-          <Property Name="C Last Name" Type="varbinary" MaxLength="50" />
+          <Property Name="C Last Name" Type="varchar" MaxLength="50" />
           <Property Name="C Address" Type="varchar" MaxLength="50" />
-          <Property Name="C City" Type="varbinary" MaxLength="50" />
+          <Property Name="C City" Type="varchar" MaxLength="50" />
           <Property Name="C State" Type="char" MaxLength="2" />
           <Property Name="C Country" Type="char" MaxLength="2" />
           <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CustoemrID" Type="int" />
+          <Property Name="CustomerID" Type="int" />
           <Property Name="Total" Type="money" />
           <Property Name="Product ID" Type="int" />
         </EntityType>
@@ -231,8 +231,7 @@
             <End Role="ProductWritingTypes" EntitySet="ProductWritingTypes" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WritersSupplyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -285,22 +284,6 @@
           <Property Name="ManufacturerName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_Manufacturers" FromRole="Manufacturers" ToRole="Products" />
         </EntityType>
-        <EntityType Name="Order">
-          <Key>
-            <PropertyRef Name="OrderID" />
-          </Key>
-          <Property Name="C_First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="C_Last_Name" Type="Binary" MaxLength="50" FixedLength="false" />
-          <Property Name="C_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="C_City" Type="Binary" MaxLength="50" FixedLength="false" />
-          <Property Name="C_State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="C_Country" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CustoemrID" Type="Int32" />
-          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Product_ID" Type="Int32" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Orders_Products" FromRole="Orders" ToRole="Products" />
-        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ProductID" />
@@ -318,8 +301,8 @@
           <NavigationProperty Name="Availability1" Relationship="Self.FK_Products_Availability" FromRole="Products" ToRole="Availability" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Products_Category" FromRole="Products" ToRole="Categories" />
           <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Products_Manufacturers" FromRole="Products" ToRole="Manufacturers" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Products" FromRole="Products" ToRole="Orders" />
           <NavigationProperty Name="ProductWritingTypes" Relationship="Self.FK_ProductWritingTypes_Products" FromRole="Products" ToRole="ProductWritingTypes" />
+          <NavigationProperty Name="Orders" Relationship="WritersSupplyModel.FK_Orders_Products" FromRole="Product" ToRole="Order" />
         </EntityType>
         <EntityType Name="ProductWritingType">
           <Key>
@@ -399,18 +382,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Orders_Products">
-          <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Products">
-              <PropertyRef Name="ProductID" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="Product_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ProductWritingTypes_Products">
           <End Role="Products" Type="Self.Product" Multiplicity="1" />
           <End Role="ProductWritingTypes" Type="Self.ProductWritingType" Multiplicity="*" />
@@ -441,7 +412,6 @@
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="Manufacturers" EntityType="Self.Manufacturer" />
-          <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="ProductWritingTypes" EntityType="Self.ProductWritingType" />
           <EntitySet Name="WritingTypes" EntityType="Self.WritingType" />
@@ -465,10 +435,6 @@
             <End Role="Manufacturers" EntitySet="Manufacturers" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK_Orders_Products" Association="Self.FK_Orders_Products">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
           <AssociationSet Name="FK_ProductWritingTypes_Products" Association="Self.FK_ProductWritingTypes_Products">
             <End Role="Products" EntitySet="Products" />
             <End Role="ProductWritingTypes" EntitySet="ProductWritingTypes" />
@@ -477,7 +443,40 @@
             <End Role="WritingTypes" EntitySet="WritingTypes" />
             <End Role="ProductWritingTypes" EntitySet="ProductWritingTypes" />
           </AssociationSet>
+          <EntitySet Name="Orders" EntityType="WritersSupplyModel.Order" />
+          <AssociationSet Name="FK_Orders_Products" Association="WritersSupplyModel.FK_Orders_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="C_First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="C_Country" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Product_ID" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="WritersSupplyModel.FK_Orders_Products" FromRole="Order" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Orders_Products">
+          <End Type="WritersSupplyModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="WritersSupplyModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -531,22 +530,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="WritersSupplyModel.Order">
-              <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="C_First_Name" ColumnName="C First Name" />
-                <ScalarProperty Name="C_Last_Name" ColumnName="C Last Name" />
-                <ScalarProperty Name="C_Address" ColumnName="C Address" />
-                <ScalarProperty Name="C_City" ColumnName="C City" />
-                <ScalarProperty Name="C_State" ColumnName="C State" />
-                <ScalarProperty Name="C_Country" ColumnName="C Country" />
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="CustoemrID" ColumnName="CustoemrID" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Product_ID" ColumnName="Product ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="WritersSupplyModel.Product">
               <MappingFragment StoreEntitySet="Products">
@@ -577,6 +560,22 @@
               <MappingFragment StoreEntitySet="WritingTypes">
                 <ScalarProperty Name="WTypeID" ColumnName="WTypeID" />
                 <ScalarProperty Name="WTypeName" ColumnName="WTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="WritersSupplyModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Product_ID" ColumnName="Product ID" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="C_Country" ColumnName="C Country" />
+                <ScalarProperty Name="C_State" ColumnName="C State" />
+                <ScalarProperty Name="C_City" ColumnName="C City" />
+                <ScalarProperty Name="C_Address" ColumnName="C Address" />
+                <ScalarProperty Name="C_Last_Name" ColumnName="C Last Name" />
+                <ScalarProperty Name="C_First_Name" ColumnName="C First Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

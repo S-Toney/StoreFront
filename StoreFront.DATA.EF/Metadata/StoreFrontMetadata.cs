@@ -113,7 +113,7 @@ namespace StoreFront.DATA.EF//.Metadata
             [Required]
             [StringLength(50, ErrorMessage = "* Must be 50 characters or less")]
             [Display(Name = "Last Name")]
-            public byte[] C_Last_Name { get; set; }
+            public string C_Last_Name { get; set; }
 
             [StringLength(50, ErrorMessage = "* Must be 50 characters or less")]
             [Display(Name = "Address")]
@@ -121,18 +121,18 @@ namespace StoreFront.DATA.EF//.Metadata
 
             [StringLength(50, ErrorMessage = "* Must be 50 characters or less")]
             [Display(Name = "City")]
-            public byte[] C_City { get; set; }
+            public string C_City { get; set; }
 
             [StringLength(2, ErrorMessage = "* Must be 2 characters or less")]
             [Display(Name = "State")]
-            public string C_State { get; set; }
+            public byte C_State { get; set; }
 
             [StringLength(2, ErrorMessage = "* Must be 2 characters or less")]
             [Display(Name = "State")]
-            public string C_Country { get; set; }
+            public byte C_Country { get; set; }
             
             [Display(Name = "Customer ID")]
-            public Nullable<int> CustoemrID { get; set; }
+            public Nullable<int> CustomerID { get; set; }
 
             [Range(0, double.MaxValue, ErrorMessage = "* Must be a valid number - 0 or larger")]
             [DisplayFormat(DataFormatString = "{0:c}", NullDisplayText = "[N/A]")]

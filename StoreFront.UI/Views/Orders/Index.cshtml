@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Orders";
+    //TODO Add Zip Code
 }
 
 <div class="p-2">
@@ -45,7 +46,7 @@
                 </a>
             </td>
             <td>
-                <a href="@Url.Action("Details", "Customer", new { id = item.CustoemrID})">
+                <a href="@Url.Action("Details", "Customer", new { id = item.CustomerID})">
                     @Html.DisplayFor(modelItem => item.C_First_Name)
                     @Html.DisplayFor(modelItem => item.C_Last_Name)
                 </a>
