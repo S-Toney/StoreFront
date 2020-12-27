@@ -96,17 +96,14 @@
 <!--Main layout-->
 <main class="mt-5 pt-4">
     <div class="container dark-grey-text mt-5">
-        <!--Grid row-->
         <div class="row wow fadeIn">
-            <!--Grid column-->
+            <!-- Product Image -->
             <div class="col-md-6 mb-4">
                 <img src="~/Content/img/@Model.Image" alt="@Model.ProductName" title="@Model.ProductName" class="img-fluid" />
                 @*<img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg"  alt="">*@
             </div>
-            <!--Grid column-->
-            <!--Grid column-->
             <div class="col-md-6 mb-4">
-                <!--Content-->
+                <!-- Product Info -->
                 <div class="p-4">
                     <h1>@Html.DisplayFor(model => model.ProductName)</h1>
                     <div class="mb-3">
@@ -131,13 +128,15 @@
                         @Html.DisplayFor(model => model.Description)
                     </p>
                     <form class="d-flex justify-content-left">
-                        <!-- Default input -->
+                        <!-- Add to Cart -->
                         @*TODONE Add to Cart Functionality - Step 2
-                            TODO Html.Textbox???*@
+        TODO Html.Textbox???*@
                         @using (Html.BeginForm("AddToCart", "Products", new { @productID = Model.ProductID }, FormMethod.Post, new { @class = "text-center" }))
                         {
                             @Html.HiddenFor(x => x.ProductID)
-                            <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
+                            @Html.TextBox("Qty", 1, new { @class = "form-control", @style = "width: 100px" })
+                            @*<input type="submit" value="Add to Cart" class="btn btn-priary btn-md my-0 p" name="qty" />
+            <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">*@
                             <button class="btn btn-primary btn-md my-0 p" type="submit" name="qty">
                                 Add to cart
                                 <i class="fas fa-shopping-cart ml-1"></i>
@@ -145,15 +144,11 @@
                         }
                     </form>
                 </div>
-                <!--Content-->
+                <!-- End Product Info -->
             </div>
-            <!--Grid column-->
         </div>
-        <!--Grid row-->
         <hr>
-        <!--Grid row-->
         <div class="row d-flex justify-content-center wow fadeIn">
-            <!--Grid column-->
             <div class="col-md-6 text-center">
                 <h4 class="my-4 h4">More @Html.DisplayFor(model => model.Category.CategoryName)</h4>
                 @*<p>

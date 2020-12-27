@@ -189,7 +189,7 @@
                     <!-- Cart Heading -->
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                         <span class="text-muted">Your cart</span>
-                        <span class="badge badge-secondary badge-pill">3</span>
+                        <span class="badge badge-secondary badge-pill">@totalCountOfItems</span>
                     </h4>
                     <!-- End Cart Heading -->
                     <!-- Cart -->
@@ -197,8 +197,8 @@
                         @foreach (var item in Model)
                         {
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>
-                                    @Html.TextBox("qty", item.Value.Qty, new { @class = "form-control", @style = "max-width: 50px; display: inline;" })
+                                <div>                                    
+                                    @Html.TextBox("qty", item.Value.Qty, new { @class = "form-control", @style = "width: 100px" })
                                     <img src="~/Content/img/t_@item.Value.Product.ProductName" />
                                     <h6 class="my-0">@item.Value.Product.ProductName</h6>
                                     @*<small class="text-muted">Brief description</small>*@

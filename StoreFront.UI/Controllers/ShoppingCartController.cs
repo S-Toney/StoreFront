@@ -20,7 +20,7 @@ namespace StoreFront.UI.Controllers
             }
             else
             {
-                ViewBag.Message = null;
+                ViewBag.Message = null;//explicitly clears out variable
             }
             return View(shoppingCart);
         }
@@ -44,6 +44,10 @@ namespace StoreFront.UI.Controllers
         public ActionResult UpdateCart(int productID, int qty)
         {
             Dictionary<int, CartItemViewModel> shoppingCart = (Dictionary<int, CartItemViewModel>)Session["cart"];
+
+            shoppingCart[productID].Qty = qty;
+
+            Session["cart"] = shoppingCart;
 
             return RedirectToAction("Index");
         }
