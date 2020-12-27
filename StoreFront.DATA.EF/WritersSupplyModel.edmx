@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WritersSupplyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WritersSupplyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Availability">
           <Key>
             <PropertyRef Name="AvailabilityID" />
@@ -52,13 +52,13 @@
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="C First Name" Type="varchar" MaxLength="50" />
-          <Property Name="C Last Name" Type="varbinary" MaxLength="50" />
+          <Property Name="C Last Name" Type="varchar" MaxLength="50" />
           <Property Name="C Address" Type="varchar" MaxLength="50" />
-          <Property Name="C City" Type="varbinary" MaxLength="50" />
+          <Property Name="C City" Type="varchar" MaxLength="50" />
           <Property Name="C State" Type="char" MaxLength="2" />
           <Property Name="C Country" Type="char" MaxLength="2" />
           <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CustoemrID" Type="int" />
+          <Property Name="CustomerID" Type="int" />
           <Property Name="Total" Type="money" />
           <Property Name="Product ID" Type="int" />
         </EntityType>
@@ -231,34 +231,76 @@
             <End Role="ProductWritingTypes" EntitySet="ProductWritingTypes" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WritersSupplyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WritersSupplyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Availabilities" EntityType="WritersSupplyModel.Availability" />
+          <EntitySet Name="Categories" EntityType="WritersSupplyModel.Category" />
+          <EntitySet Name="Departments" EntityType="WritersSupplyModel.Department" />
+          <EntitySet Name="Employees" EntityType="WritersSupplyModel.Employee" />
+          <EntitySet Name="Manufacturers" EntityType="WritersSupplyModel.Manufacturer" />
+          <EntitySet Name="Orders" EntityType="WritersSupplyModel.Order" />
+          <EntitySet Name="Products" EntityType="WritersSupplyModel.Product" />
+          <EntitySet Name="ProductWritingTypes" EntityType="WritersSupplyModel.ProductWritingType" />
+          <EntitySet Name="WritingTypes" EntityType="WritersSupplyModel.WritingType" />
+          <AssociationSet Name="FK_Products_Availability" Association="WritersSupplyModel.FK_Products_Availability">
+            <End Role="Availability" EntitySet="Availabilities" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Category" Association="WritersSupplyModel.FK_Products_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Departments" Association="WritersSupplyModel.FK_Employees_Departments">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Employees" Association="WritersSupplyModel.FK_Employees_Employees">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Employee1" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Manufacturers" Association="WritersSupplyModel.FK_Products_Manufacturers">
+            <End Role="Manufacturer" EntitySet="Manufacturers" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Products" Association="WritersSupplyModel.FK_Orders_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductWritingTypes_Products" Association="WritersSupplyModel.FK_ProductWritingTypes_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductWritingType" EntitySet="ProductWritingTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductWritingTypes_WritingTypes" Association="WritersSupplyModel.FK_ProductWritingTypes_WritingTypes">
+            <End Role="WritingType" EntitySet="WritingTypes" />
+            <End Role="ProductWritingType" EntitySet="ProductWritingTypes" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Availability">
           <Key>
             <PropertyRef Name="AvailabilityID" />
           </Key>
           <Property Name="AvailabilityID" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Availability" FromRole="Availability" ToRole="Products" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Products" Relationship="WritersSupplyModel.FK_Products_Availability" FromRole="Availability" ToRole="Product" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
-          <Property Name="CategoryName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Category" FromRole="Categories" ToRole="Products" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Products" Relationship="WritersSupplyModel.FK_Products_Category" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="DeptID" />
           </Key>
           <Property Name="DeptID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DaptName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Departments" FromRole="Departments" ToRole="Employees" />
+          <Property Name="DaptName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employees" Relationship="WritersSupplyModel.FK_Employees_Departments" FromRole="Department" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -266,60 +308,60 @@
           </Key>
           <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DirectReportID" Type="Int32" Nullable="false" />
-          <Property Name="EmpFName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EmpLName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpFName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpLName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EmpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EmpCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EmpState" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="EmpCountry" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="DeptID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Department" Relationship="Self.FK_Employees_Departments" FromRole="Employees" ToRole="Departments" />
-          <NavigationProperty Name="Employees1" Relationship="Self.FK_Employees_Employees" FromRole="Employees" ToRole="Employees1" />
-          <NavigationProperty Name="Employee1" Relationship="Self.FK_Employees_Employees" FromRole="Employees1" ToRole="Employees" />
+          <NavigationProperty Name="Department" Relationship="WritersSupplyModel.FK_Employees_Departments" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Employees1" Relationship="WritersSupplyModel.FK_Employees_Employees" FromRole="Employee" ToRole="Employee1" />
+          <NavigationProperty Name="Employee1" Relationship="WritersSupplyModel.FK_Employees_Employees" FromRole="Employee1" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Manufacturer">
           <Key>
             <PropertyRef Name="ManufacturerID" />
           </Key>
           <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
-          <Property Name="ManufacturerName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Manufacturers" FromRole="Manufacturers" ToRole="Products" />
+          <Property Name="ManufacturerName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Products" Relationship="WritersSupplyModel.FK_Products_Manufacturers" FromRole="Manufacturer" ToRole="Product" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="C_First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="C_Last_Name" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="C_Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="C_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="C_City" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="C_City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="C_State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="C_Country" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CustoemrID" Type="Int32" />
+          <Property Name="CustomerID" Type="Int32" />
           <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Product_ID" Type="Int32" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Orders_Products" FromRole="Orders" ToRole="Products" />
+          <NavigationProperty Name="Product" Relationship="WritersSupplyModel.FK_Orders_Products" FromRole="Order" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ProductID" />
           </Key>
           <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
-          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Availability" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Size" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <Property Name="OS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Availability1" Relationship="Self.FK_Products_Availability" FromRole="Products" ToRole="Availability" />
-          <NavigationProperty Name="Category" Relationship="Self.FK_Products_Category" FromRole="Products" ToRole="Categories" />
-          <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Products_Manufacturers" FromRole="Products" ToRole="Manufacturers" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Products" FromRole="Products" ToRole="Orders" />
-          <NavigationProperty Name="ProductWritingTypes" Relationship="Self.FK_ProductWritingTypes_Products" FromRole="Products" ToRole="ProductWritingTypes" />
+          <NavigationProperty Name="Availability1" Relationship="WritersSupplyModel.FK_Products_Availability" FromRole="Product" ToRole="Availability" />
+          <NavigationProperty Name="Category" Relationship="WritersSupplyModel.FK_Products_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Manufacturer" Relationship="WritersSupplyModel.FK_Products_Manufacturers" FromRole="Product" ToRole="Manufacturer" />
+          <NavigationProperty Name="Orders" Relationship="WritersSupplyModel.FK_Orders_Products" FromRole="Product" ToRole="Order" />
+          <NavigationProperty Name="ProductWritingTypes" Relationship="WritersSupplyModel.FK_ProductWritingTypes_Products" FromRole="Product" ToRole="ProductWritingType" />
         </EntityType>
         <EntityType Name="ProductWritingType">
           <Key>
@@ -328,157 +370,114 @@
           <Property Name="PWTypeID" Type="Int32" Nullable="false" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="WTypeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_ProductWritingTypes_Products" FromRole="ProductWritingTypes" ToRole="Products" />
-          <NavigationProperty Name="WritingType" Relationship="Self.FK_ProductWritingTypes_WritingTypes" FromRole="ProductWritingTypes" ToRole="WritingTypes" />
+          <NavigationProperty Name="Product" Relationship="WritersSupplyModel.FK_ProductWritingTypes_Products" FromRole="ProductWritingType" ToRole="Product" />
+          <NavigationProperty Name="WritingType" Relationship="WritersSupplyModel.FK_ProductWritingTypes_WritingTypes" FromRole="ProductWritingType" ToRole="WritingType" />
         </EntityType>
         <EntityType Name="WritingType">
           <Key>
             <PropertyRef Name="WTypeID" />
           </Key>
           <Property Name="WTypeID" Type="Int32" Nullable="false" />
-          <Property Name="WTypeName" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ProductWritingTypes" Relationship="Self.FK_ProductWritingTypes_WritingTypes" FromRole="WritingTypes" ToRole="ProductWritingTypes" />
+          <Property Name="WTypeName" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProductWritingTypes" Relationship="WritersSupplyModel.FK_ProductWritingTypes_WritingTypes" FromRole="WritingType" ToRole="ProductWritingType" />
         </EntityType>
         <Association Name="FK_Products_Availability">
-          <End Role="Availability" Type="Self.Availability" Multiplicity="1" />
-          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <End Type="WritersSupplyModel.Availability" Role="Availability" Multiplicity="1" />
+          <End Type="WritersSupplyModel.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Availability">
               <PropertyRef Name="AvailabilityID" />
             </Principal>
-            <Dependent Role="Products">
+            <Dependent Role="Product">
               <PropertyRef Name="Availability" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Products_Category">
-          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
-          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <End Type="WritersSupplyModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="WritersSupplyModel.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Categories">
+            <Principal Role="Category">
               <PropertyRef Name="CategoryID" />
             </Principal>
-            <Dependent Role="Products">
+            <Dependent Role="Product">
               <PropertyRef Name="CategoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employees_Departments">
-          <End Role="Departments" Type="Self.Department" Multiplicity="1" />
-          <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
+          <End Type="WritersSupplyModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="WritersSupplyModel.Employee" Role="Employee" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Departments">
+            <Principal Role="Department">
               <PropertyRef Name="DeptID" />
             </Principal>
-            <Dependent Role="Employees">
+            <Dependent Role="Employee">
               <PropertyRef Name="DeptID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employees_Employees">
-          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
-          <End Role="Employees1" Type="Self.Employee" Multiplicity="*" />
+          <End Type="WritersSupplyModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="WritersSupplyModel.Employee" Role="Employee1" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Employees">
+            <Principal Role="Employee">
               <PropertyRef Name="EmployeeID" />
             </Principal>
-            <Dependent Role="Employees1">
+            <Dependent Role="Employee1">
               <PropertyRef Name="DirectReportID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Products_Manufacturers">
-          <End Role="Manufacturers" Type="Self.Manufacturer" Multiplicity="1" />
-          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <End Type="WritersSupplyModel.Manufacturer" Role="Manufacturer" Multiplicity="1" />
+          <End Type="WritersSupplyModel.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Manufacturers">
+            <Principal Role="Manufacturer">
               <PropertyRef Name="ManufacturerID" />
             </Principal>
-            <Dependent Role="Products">
+            <Dependent Role="Product">
               <PropertyRef Name="ManufacturerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_Products">
-          <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <End Type="WritersSupplyModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="WritersSupplyModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Products">
+            <Principal Role="Product">
               <PropertyRef Name="ProductID" />
             </Principal>
-            <Dependent Role="Orders">
+            <Dependent Role="Order">
               <PropertyRef Name="Product_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProductWritingTypes_Products">
-          <End Role="Products" Type="Self.Product" Multiplicity="1" />
-          <End Role="ProductWritingTypes" Type="Self.ProductWritingType" Multiplicity="*" />
+          <End Type="WritersSupplyModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="WritersSupplyModel.ProductWritingType" Role="ProductWritingType" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Products">
+            <Principal Role="Product">
               <PropertyRef Name="ProductID" />
             </Principal>
-            <Dependent Role="ProductWritingTypes">
+            <Dependent Role="ProductWritingType">
               <PropertyRef Name="ProductID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProductWritingTypes_WritingTypes">
-          <End Role="WritingTypes" Type="Self.WritingType" Multiplicity="1" />
-          <End Role="ProductWritingTypes" Type="Self.ProductWritingType" Multiplicity="*" />
+          <End Type="WritersSupplyModel.WritingType" Role="WritingType" Multiplicity="1" />
+          <End Type="WritersSupplyModel.ProductWritingType" Role="ProductWritingType" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WritingTypes">
+            <Principal Role="WritingType">
               <PropertyRef Name="WTypeID" />
             </Principal>
-            <Dependent Role="ProductWritingTypes">
+            <Dependent Role="ProductWritingType">
               <PropertyRef Name="WTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="WritersSupplyEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Availabilities" EntityType="Self.Availability" />
-          <EntitySet Name="Categories" EntityType="Self.Category" />
-          <EntitySet Name="Departments" EntityType="Self.Department" />
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
-          <EntitySet Name="Manufacturers" EntityType="Self.Manufacturer" />
-          <EntitySet Name="Orders" EntityType="Self.Order" />
-          <EntitySet Name="Products" EntityType="Self.Product" />
-          <EntitySet Name="ProductWritingTypes" EntityType="Self.ProductWritingType" />
-          <EntitySet Name="WritingTypes" EntityType="Self.WritingType" />
-          <AssociationSet Name="FK_Products_Availability" Association="Self.FK_Products_Availability">
-            <End Role="Availability" EntitySet="Availabilities" />
-            <End Role="Products" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
-            <End Role="Categories" EntitySet="Categories" />
-            <End Role="Products" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employees_Departments" Association="Self.FK_Employees_Departments">
-            <End Role="Departments" EntitySet="Departments" />
-            <End Role="Employees" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employees_Employees" Association="Self.FK_Employees_Employees">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="Employees1" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Products_Manufacturers" Association="Self.FK_Products_Manufacturers">
-            <End Role="Manufacturers" EntitySet="Manufacturers" />
-            <End Role="Products" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Orders_Products" Association="Self.FK_Orders_Products">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductWritingTypes_Products" Association="Self.FK_ProductWritingTypes_Products">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="ProductWritingTypes" EntitySet="ProductWritingTypes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductWritingTypes_WritingTypes" Association="Self.FK_ProductWritingTypes_WritingTypes">
-            <End Role="WritingTypes" EntitySet="WritingTypes" />
-            <End Role="ProductWritingTypes" EntitySet="ProductWritingTypes" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -487,96 +486,96 @@
           <EntitySetMapping Name="Availabilities">
             <EntityTypeMapping TypeName="WritersSupplyModel.Availability">
               <MappingFragment StoreEntitySet="Availability">
-                <ScalarProperty Name="AvailabilityID" ColumnName="AvailabilityID" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AvailabilityID" ColumnName="AvailabilityID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="WritersSupplyModel.Category">
               <MappingFragment StoreEntitySet="Categories">
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Departments">
             <EntityTypeMapping TypeName="WritersSupplyModel.Department">
               <MappingFragment StoreEntitySet="Departments">
-                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
                 <ScalarProperty Name="DaptName" ColumnName="DaptName" />
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="WritersSupplyModel.Employee">
               <MappingFragment StoreEntitySet="Employees">
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="DirectReportID" ColumnName="DirectReportID" />
-                <ScalarProperty Name="EmpFName" ColumnName="EmpFName" />
-                <ScalarProperty Name="EmpLName" ColumnName="EmpLName" />
-                <ScalarProperty Name="EmpAddress" ColumnName="EmpAddress" />
-                <ScalarProperty Name="EmpCity" ColumnName="EmpCity" />
-                <ScalarProperty Name="EmpState" ColumnName="EmpState" />
-                <ScalarProperty Name="EmpCountry" ColumnName="EmpCountry" />
                 <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+                <ScalarProperty Name="EmpCountry" ColumnName="EmpCountry" />
+                <ScalarProperty Name="EmpState" ColumnName="EmpState" />
+                <ScalarProperty Name="EmpCity" ColumnName="EmpCity" />
+                <ScalarProperty Name="EmpAddress" ColumnName="EmpAddress" />
+                <ScalarProperty Name="EmpLName" ColumnName="EmpLName" />
+                <ScalarProperty Name="EmpFName" ColumnName="EmpFName" />
+                <ScalarProperty Name="DirectReportID" ColumnName="DirectReportID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Manufacturers">
             <EntityTypeMapping TypeName="WritersSupplyModel.Manufacturer">
               <MappingFragment StoreEntitySet="Manufacturers">
-                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
                 <ScalarProperty Name="ManufacturerName" ColumnName="ManufacturerName" />
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="WritersSupplyModel.Order">
               <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="C_First_Name" ColumnName="C First Name" />
-                <ScalarProperty Name="C_Last_Name" ColumnName="C Last Name" />
-                <ScalarProperty Name="C_Address" ColumnName="C Address" />
-                <ScalarProperty Name="C_City" ColumnName="C City" />
-                <ScalarProperty Name="C_State" ColumnName="C State" />
-                <ScalarProperty Name="C_Country" ColumnName="C Country" />
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="CustoemrID" ColumnName="CustoemrID" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="Product_ID" ColumnName="Product ID" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="C_Country" ColumnName="C Country" />
+                <ScalarProperty Name="C_State" ColumnName="C State" />
+                <ScalarProperty Name="C_City" ColumnName="C City" />
+                <ScalarProperty Name="C_Address" ColumnName="C Address" />
+                <ScalarProperty Name="C_Last_Name" ColumnName="C Last Name" />
+                <ScalarProperty Name="C_First_Name" ColumnName="C First Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="WritersSupplyModel.Product">
               <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Availability" ColumnName="Availability" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Size" ColumnName="Size" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Availability" ColumnName="Availability" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductWritingTypes">
             <EntityTypeMapping TypeName="WritersSupplyModel.ProductWritingType">
               <MappingFragment StoreEntitySet="ProductWritingTypes">
-                <ScalarProperty Name="PWTypeID" ColumnName="PWTypeID" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="WTypeId" ColumnName="WTypeId" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="PWTypeID" ColumnName="PWTypeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WritingTypes">
             <EntityTypeMapping TypeName="WritersSupplyModel.WritingType">
               <MappingFragment StoreEntitySet="WritingTypes">
-                <ScalarProperty Name="WTypeID" ColumnName="WTypeID" />
                 <ScalarProperty Name="WTypeName" ColumnName="WTypeName" />
+                <ScalarProperty Name="WTypeID" ColumnName="WTypeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
