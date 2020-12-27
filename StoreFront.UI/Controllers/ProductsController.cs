@@ -56,7 +56,7 @@ namespace StoreFront.UI.Controllers
             Product product = db.Products.Where(p => p.ProductID == productID).FirstOrDefault();
             if (product == null)
             {
-                return RedirectToAction("Index:");
+                return RedirectToAction("Index");
             }
             else
             {
