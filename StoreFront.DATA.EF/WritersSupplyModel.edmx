@@ -39,6 +39,7 @@
           <Property Name="EmpState" Type="char" MaxLength="2" />
           <Property Name="EmpCountry" Type="char" MaxLength="2" />
           <Property Name="DeptID" Type="int" Nullable="false" />
+          <Property Name="EmpZipCode" Type="varchar" MaxLength="5" />
         </EntityType>
         <EntityType Name="Manufacturers">
           <Key>
@@ -58,9 +59,10 @@
           <Property Name="C State" Type="char" MaxLength="2" />
           <Property Name="C Country" Type="char" MaxLength="2" />
           <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CustomerID" Type="int" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" />
           <Property Name="Total" Type="money" />
           <Property Name="Product ID" Type="int" />
+          <Property Name="C Zip Code" Type="varchar" MaxLength="5" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -71,7 +73,7 @@
           <Property Name="ManufacturerID" Type="int" Nullable="false" />
           <Property Name="Price" Type="money" Nullable="false" />
           <Property Name="Availability" Type="int" Nullable="false" />
-          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
           <Property Name="Image" Type="varchar" MaxLength="200" />
           <Property Name="Size" Type="varchar" MaxLength="20" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
@@ -315,6 +317,7 @@
           <Property Name="EmpState" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="EmpCountry" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="DeptID" Type="Int32" Nullable="false" />
+          <Property Name="EmpZipCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Department" Relationship="WritersSupplyModel.FK_Employees_Departments" FromRole="Employee" ToRole="Department" />
           <NavigationProperty Name="Employees1" Relationship="WritersSupplyModel.FK_Employees_Employees" FromRole="Employee" ToRole="Employee1" />
           <NavigationProperty Name="Employee1" Relationship="WritersSupplyModel.FK_Employees_Employees" FromRole="Employee1" ToRole="Employee" />
@@ -338,9 +341,10 @@
           <Property Name="C_State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="C_Country" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Product_ID" Type="Int32" />
+          <Property Name="C_Zip_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Product" Relationship="WritersSupplyModel.FK_Orders_Products" FromRole="Order" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product">
@@ -352,7 +356,7 @@
           <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Availability" Type="Int32" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Size" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
@@ -510,6 +514,7 @@
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="WritersSupplyModel.Employee">
               <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmpZipCode" ColumnName="EmpZipCode" />
                 <ScalarProperty Name="DeptID" ColumnName="DeptID" />
                 <ScalarProperty Name="EmpCountry" ColumnName="EmpCountry" />
                 <ScalarProperty Name="EmpState" ColumnName="EmpState" />
@@ -533,9 +538,10 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="WritersSupplyModel.Order">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="C_Zip_Code" ColumnName="C Zip Code" />
                 <ScalarProperty Name="Product_ID" ColumnName="Product ID" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="C_Country" ColumnName="C Country" />
                 <ScalarProperty Name="C_State" ColumnName="C State" />

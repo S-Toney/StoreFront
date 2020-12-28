@@ -30,9 +30,9 @@ namespace StoreFront.DATA.EF
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Manufacturer> Manufacturers { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductWritingType> ProductWritingTypes { get; set; }
         public virtual DbSet<WritingType> WritingTypes { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
     }
 }

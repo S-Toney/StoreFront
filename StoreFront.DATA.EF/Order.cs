@@ -21,9 +21,10 @@ namespace StoreFront.DATA.EF
         public string C_State { get; set; }
         public string C_Country { get; set; }
         public int OrderID { get; set; }
-        public Nullable<int> CustomerID { get; set; }
+        public string UserID { get; set; }
         public Nullable<decimal> Total { get; set; }
         public Nullable<int> Product_ID { get; set; }
+        public string C_Zip_Code { get; set; }
     
         public virtual Product Product { get; set; }
     }
