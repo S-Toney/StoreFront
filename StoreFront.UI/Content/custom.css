@@ -1,0 +1,17 @@
+﻿.slide1 {
+    background-image: url('img/oldKeyboard.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slide2 {
+    background-image: url('img/fountainPen.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slide3 {
+    background-image: url('img/richard-dykes-SPuHHjbSso8-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
