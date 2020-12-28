@@ -12,7 +12,7 @@ namespace StoreFront.UI.MVC.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        //[Authorize] This was causing login to be required to see about page
         public ActionResult About()
         {
             ViewBag.RenderCarousel = true;
