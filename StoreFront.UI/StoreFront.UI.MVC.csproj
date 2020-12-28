@@ -240,6 +240,7 @@
     <Content Include="Content\img\samsungtab6.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\img\spilledInk.jpg" />
     <Content Include="Content\img\svg\arrow_left.svg" />
     <Content Include="Content\img\svg\arrow_right.svg" />
     <Content Include="Content\img\t_NoImage.png">
@@ -369,12 +370,12 @@
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Errors\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\esm\" />
     <Folder Include="Scripts\umd\" />
-    <Folder Include="Views\Errors\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
