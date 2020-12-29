@@ -41,6 +41,7 @@ namespace StoreFront.UI.Controllers
         }
 
         //TODONE Add to Cart Functionality - Step 3
+        [HttpPost]
         public ActionResult AddToCart(int qty, int productID)
         {
             Dictionary<int, CartItemViewModel> shoppingCart = null;
@@ -176,7 +177,7 @@ namespace StoreFront.UI.Controllers
                             file = Guid.NewGuid() + ext;
 
                             #region Resize Image
-                            string savePath = Server.MapPath("~/Content/ing/");
+                            string savePath = Server.MapPath("~/Content/img/");
                             Image convertedImage = Image.FromStream(productImg.InputStream);
 
                             int maxImageSize = 500;

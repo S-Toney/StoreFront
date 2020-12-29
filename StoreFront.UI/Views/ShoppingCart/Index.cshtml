@@ -204,8 +204,7 @@
                                     @*<small class="text-muted">Brief description</small>*@
                                 </div>
                                 <span class="text-muted">
-                                    $@(item.Value.Product.Price * item.Value.Qty
-                                    )
+                                    @(string.Format($"{(item.Value.Product.Price * item.Value.Qty):c}"))                                    
                                 </span>
                             </li>
                         }

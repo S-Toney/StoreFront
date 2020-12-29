@@ -8,10 +8,10 @@
 //    console.log("Hello World jQuery");
 //});
 
-$(document).ready(function () {
-    var f = document.getElementById('404-2');
-    setInterval(function () {
-        f.style.display = (f.style.display == 'color: #fff' ? '' : 'color: transparent');
-    }, 1000);
+//$(document).ready(function () {
+//    var f = document.getElementById('404-2');
+//    setInterval(function () {
+//        f.style.display = (f.style.display == 'color: #fff' ? '' : 'color: transparent');
+//    }, 1000);
 
-});
+//});

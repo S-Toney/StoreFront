@@ -1,4 +1,5 @@
-﻿@model StoreFront.DATA.EF.Product
+﻿
+@model StoreFront.DATA.EF.Product
 
 @{
     ViewBag.Title = "Product Details";
@@ -127,7 +128,7 @@
                     <p>
                         @Html.DisplayFor(model => model.Description)
                     </p>
-                    <form class="d-flex justify-content-left">
+                    @*<form class="d-flex justify-content-left">*@
                         <!-- Add to Cart -->
                         @*TODONE Add to Cart Functionality - Step 2
         TODO Html.Textbox???*@
@@ -135,14 +136,14 @@
                         {
                             @Html.HiddenFor(x => x.ProductID)
                             @Html.TextBox("Qty", 1, new { @class = "form-control", @style = "width: 100px" })
-                            @*<input type="submit" value="Add to Cart" class="btn btn-priary btn-md my-0 p" name="qty" />
-            <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">*@
-                            <button class="btn btn-primary btn-md my-0 p" type="submit" name="qty">
+                            <input type="submit" value="Add to Cart" class="btn btn-priary btn-md my-0 p" name="qty" />
+            @*<input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">*@
+                            @*<button class="btn btn-primary btn-md my-0 p" type="submit" name="qty">
                                 Add to cart
                                 <i class="fas fa-shopping-cart ml-1"></i>
-                            </button>
+                            </button>*@
                         }
-                    </form>
+                    @*</form>*@
                 </div>
                 <!-- End Product Info -->
             </div>
