@@ -48,7 +48,7 @@ namespace StoreFront.UI.Controllers
 
         public ActionResult Throw404()
         {
-            return HttpNotFound();
+            return View();
         }
 
         public ActionResult NotFound()

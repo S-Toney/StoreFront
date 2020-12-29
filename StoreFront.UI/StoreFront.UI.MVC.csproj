@@ -240,7 +240,9 @@
     <Content Include="Content\img\samsungtab6.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\img\spilledInk.jpg" />
+    <Content Include="Content\img\spilledInk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\img\svg\arrow_left.svg" />
     <Content Include="Content\img\svg\arrow_right.svg" />
     <Content Include="Content\img\t_NoImage.png">
@@ -322,7 +324,9 @@
     <Content Include="Content\fonts\Roboto-Thin.ttf" />
     <Content Include="Content\fonts\Roboto-Thin.woff" />
     <Content Include="Content\fonts\Roboto-Thin.woff2" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -371,6 +375,7 @@
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Errors\Index.cshtml" />
+    <Content Include="Views\Errors\Throw404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
