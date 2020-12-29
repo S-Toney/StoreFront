@@ -15,14 +15,31 @@
 //}
 //alert(greeting);
 
-var i = 1;
-var txt = 'Lorem ipsum typing effect!'; /* The text */
-var speed = 50; /* The speed/duration of the effect in milliseconds */
+//var i = 1;
+//var txt = 'The page...'; /* The text */
+//var speed = 50; /* The speed/duration of the effect in milliseconds */
 
-function typeWriter() {
-    if (i < txt.length) {
-        document.getElementById("404-1").innerHTML += txt.charAt(i);
-        i++;
-        setTimeout(typeWriter, speed);
-    }
-}
+//function typeWriter() {
+//    if (i < txt.length) {
+//        document.getElementById("404-1").innerHTML += txt.charAt(i);
+//        i++;
+//        setTimeout(typeWriter, speed);
+//    }
+//}
+
+var error404 = document.getElementById('404-1');
+
+var typewriter = new Typewriter(error404, {
+    loop: false
+    //strings: ['The page...'],
+    //autoStart: true
+});
+
+typewriter.typeString("The page")
+.pauseFor(700)
+.typeString('.')
+.pauseFor(700)
+.typeString('.')
+.pauseFor(700)
+.typeString('.')
+.start();
