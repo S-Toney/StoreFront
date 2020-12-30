@@ -19,14 +19,7 @@
 //var txt = 'The page...'; /* The text */
 //var speed = 50; /* The speed/duration of the effect in milliseconds */
 
-//function typeWriter() {
-//    if (i < txt.length) {
-//        document.getElementById("404-1").innerHTML += txt.charAt(i);
-//        i++;
-//        setTimeout(typeWriter, speed);
-//    }
-//}
-
+// Typed text on Custom Error Page 404
 var error404 = document.getElementById('404-1');
 
 var typewriter = new Typewriter(error404, {
