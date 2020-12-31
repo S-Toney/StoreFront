@@ -8,6 +8,8 @@
 //    console.log("Hello World jQuery");
 //});
 
+// Custom Error 404 
+
 setTimeout(function(){
     if ($('#404-2').hasClass('gone')) {
         $('#404-2').addClass('gone-in');

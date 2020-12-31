@@ -22,7 +22,7 @@ console.info('Fun Fact: Bull Sharks have been seen around St. Louis by multiple 
 //var txt = 'The page...'; /* The text */
 //var speed = 50; /* The speed/duration of the effect in milliseconds */
 
-// Typed text on Custom Error Page 404
+// Custom Error Page 404
 var error404 = document.getElementById('404-1');
 
 var typewriter = new Typewriter(error404, {
