@@ -1,4 +1,5 @@
-﻿.slide1 {
+﻿/* Jumbotron CSS */
+.slide1 {
     background-image: url('img/oldKeyboard.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -16,6 +17,7 @@
     background-size: cover;
 }
 
+/* Custom Error 404 */
 .spilledInk {
     background-image: url('img/spilledInk.png');
     background-repeat: no-repeat;
@@ -23,6 +25,24 @@
     background-position-x: center;
     height: 1200px;
 }
+
+.gone {
+    color: transparent;
+    text-shadow: none;
+}
+
+.gone-in {
+    color: #fff;
+    text-shadow: 3px 3px 3px #BBC7EF;
+    font-size: 4em;
+}
+
+.gone-out {
+    color: transparent;
+    text-shadow: 5px 5px 3px #BBC7EF;
+    font-size: 4em;
+}
+
 
 .text-shadow-white {
     color: transparent;

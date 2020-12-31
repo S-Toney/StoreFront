@@ -8,10 +8,32 @@
 //    console.log("Hello World jQuery");
 //});
 
-//$(document).ready(function () {
-//    var f = document.getElementById('404-2');
-//    setInterval(function () {
-//        f.style.display = (f.style.display == 'color: #fff' ? '' : 'color: transparent');
-//    }, 1000);
+setTimeout(function(){
+    if ($('#404-2').hasClass('gone')) {
+        $('#404-2').addClass('gone-in');
+    }
+}, 4500);
 
-//});
+//setTimeout(function () {
+//    if ($('#404-2').hasClass('gone-in')) {
+//        $('#404-2').removeClass('gone-in').addClass('gone-out');
+//    } else {
+//        $('#404-2').removeClass('gone-out').addClass('gone-in');
+//    }
+//}, 2000);
+
+//setTimeout(function () {
+//    if ($('#404-2').hasClass('gone-in')) {
+//        $('#404-2').removeClass('gone-in').addClass('gone-out');
+//    } else {
+//        $('#404-2').removeClass('gone-out').addClass('gone-in');
+//    }
+//}, 2000);
+
+//setTimeout(function () {
+//    if ($('#404-2').hasClass('gone-in')) {
+//        $('#404-2').removeClass('gone-in').addClass('gone-out');
+//    } else {
+//        $('#404-2').removeClass('gone-out').addClass('gone-in');
+//    }
+//}, 2000);

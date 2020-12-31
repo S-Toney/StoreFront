@@ -1,5 +1,8 @@
 ﻿//alert("Hello World");
 
+//fun fact for fellow developers
+console.info('Fun Fact: Bull Sharks have been seen around St. Louis by multiple reputable sources and at least one fisherman has caught one in the Mississippi river near there.');
+
 //var today = new Date();
 //var hourNow = today.getHours();
 //var greeting;
@@ -36,3 +39,16 @@ typewriter.typeString("The page")
 .pauseFor(700)
 .typeString('.')
 .start();
+
+//function goneBlink() {
+//    //var element = document.getElementById("404-2");
+//    removeClass('#404-2','gone');
+//    addClass('#404-2','gone-in');
+//    setTimeout(function () {
+//        removeClass('#404-2', 'gone-in');
+//        addClass('#404-2', 'gone-out');
+//    }, 2000);
+    
+//}
+
+//addEventListener(onload, goneBlink());
