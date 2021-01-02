@@ -46,40 +46,54 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ProductName)
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID})">@Html.DisplayFor(modelItem => item.ProductName)
+                    </a>
                 </td>
                 <td>
-                    $@Html.DisplayFor(modelItem => item.Price)
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID})">
+                        $@Html.DisplayFor(modelItem => item.Price)
+                    </a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Description)
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID})">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </a>
                 </td>
                 <td>
                     @*TODONE ImagerService*@
                     @*@Html.DisplayFor(modelItem => item.Image)*@
-                    <img src="~/Content/img/t_@item.Image" alt="@item.ProductName Image" title="@item.ProductName" />
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID})">
+                        <img src="~/Content/img/t_@item.Image" alt="@item.ProductName Image" title="@item.ProductName" />
+                    </a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Size)
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID})">
+                        @Html.DisplayFor(modelItem => item.Size)
+                    </a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.OS)
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID})">
+                        @Html.DisplayFor(modelItem => item.OS)
+                    </a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Availability1.Status)
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID})">
+                        @Html.DisplayFor(modelItem => item.Availability1.Status)
+                    </a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID})">
+                        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                    </a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Manufacturer.ManufacturerName)
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID})">
+                        @Html.DisplayFor(modelItem => item.Manufacturer.ManufacturerName)
+                    </a>
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ProductID })
-                    @*TODO FontAwesome Icon not showing up*@
-                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID })"><i class="fas fa-folder-open-o" aria-hidden="true"></i></a> |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+                    <a href="@Url.Action("Edit", "Products", new { id = item.ProductID })"><i class="fas fa-edit mr-2"></i></a>
+                    <a href="@Url.Action("Delete", "Products", new { id = item.ProductID})"><i class="fas fa-trash-alt"></i></a>
                 </td>
             </tr>
         }

@@ -201,7 +201,7 @@
                                 <div>                                    
                                     @Html.TextBox("qty", item.Value.Qty, new { @class = "form-control", @style = "width: 50px" })
                                     <a href="@Url.Action("RemoveFromCart")"><i class='fas fa-trash-alt'></i></a>
-                                    <img src="~/Content/img/@item.Value.Product.Image" />
+                                    @*<img src="~/Content/img/@item.Value.Product.Image" />*@
                                     <h6 class="my-0">t_@item.Value.Product.Image</h6>
                                     @*<small class="text-muted">Brief description</small>*@
                                 </div>
@@ -212,20 +212,7 @@
                             cartTotal += ((item.Value.Product.Price * item.Value.Qty) - promo);
                             totalCountOfItems += item.Value.Qty;
                         }
-                        @*<li class="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>
-                                    <h6 class="my-0">Second product</h6>
-                                    <small class="text-muted">Brief description</small>
-                                </div>
-                                <span class="text-muted">$8</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>
-                                    <h6 class="my-0">Third item</h6>
-                                    <small class="text-muted">Brief description</small>
-                                </div>
-                                <span class="text-muted">$5</span>
-                            </li>*@
+
                         <li class="list-group-item d-flex justify-content-between bg-light">
                             <div class="text-success">
                                 <h6 class="my-0">Promo code</h6>
@@ -233,6 +220,7 @@
                             </div>
                             <span class="text-success">-$5</span>
                         </li>
+                        <!-- Cart Total -->
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Total (USD)</span>
                             <strong>@String.Format($"{cartTotal:c}")</strong>
