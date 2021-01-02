@@ -4,6 +4,7 @@
 
     decimal? cartTotal = 0;
     int totalCountOfItems = 0;
+    decimal promo = 5;
 }
 
 <h2>@ViewBag.Title</h2>
@@ -189,7 +190,7 @@
                     <!-- Cart Heading -->
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                         <span class="text-muted">Your cart</span>
-                        <span class="badge badge-secondary badge-pill">@totalCountOfItems</span>
+                        <span class="badge badge-secondary badge-pill">@totalCountOfItems.ToString()</span>
                     </h4>
                     <!-- End Cart Heading -->
                     <!-- Cart -->
@@ -198,15 +199,18 @@
                         {
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>                                    
-                                    @Html.TextBox("qty", item.Value.Qty, new { @class = "form-control", @style = "width: 100px" })
-                                    <img src="~/Content/img/t_@item.Value.Product.ProductName" />
-                                    <h6 class="my-0">@item.Value.Product.ProductName</h6>
+                                    @Html.TextBox("qty", item.Value.Qty, new { @class = "form-control", @style = "width: 50px" })
+                                    <a href="@Url.Action("RemoveFromCart")"><i class='fas fa-trash-alt'></i></a>
+                                    <img src="~/Content/img/@item.Value.Product.Image" />
+                                    <h6 class="my-0">t_@item.Value.Product.Image</h6>
                                     @*<small class="text-muted">Brief description</small>*@
                                 </div>
                                 <span class="text-muted">
                                     @(string.Format($"{(item.Value.Product.Price * item.Value.Qty):c}"))                                    
                                 </span>
                             </li>
+                            cartTotal += ((item.Value.Product.Price * item.Value.Qty) - promo);
+                            totalCountOfItems += item.Value.Qty;
                         }
                         @*<li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>
@@ -231,7 +235,7 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Total (USD)</span>
-                            <strong>$ Add razor total)</strong>
+                            <strong>@String.Format($"{cartTotal:c}")</strong>
                         </li>
                     </ul>
                     <!-- End Cart -->
