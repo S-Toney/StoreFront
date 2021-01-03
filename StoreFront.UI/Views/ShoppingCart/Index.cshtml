@@ -3,7 +3,6 @@
     ViewBag.Title = "Cart";
 
     decimal? cartTotal = 0;
-    int totalCountOfItems = 0;
     decimal promo = 5;
 }
 
@@ -180,7 +179,6 @@
                     <!-- End Card-->
                 </div>
                 <!-- End Checkout Form -->
-
                 <div class="col-md-4 mb-4">
                     <!-- Return to Shopping -->
                     <p class="text-center">
@@ -190,7 +188,6 @@
                     <!-- Cart Heading -->
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                         <span class="text-muted">Your cart</span>
-                        <span class="badge badge-secondary badge-pill">@totalCountOfItems.ToString()</span>
                     </h4>
                     <!-- End Cart Heading -->
                     <!-- Cart -->
@@ -210,7 +207,6 @@
                                 </span>
                             </li>
                             cartTotal += ((item.Value.Product.Price * item.Value.Qty) - promo);
-                            totalCountOfItems += item.Value.Qty;
                         }
 
                         <li class="list-group-item d-flex justify-content-between bg-light">

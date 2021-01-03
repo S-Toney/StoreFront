@@ -82,12 +82,12 @@
                     </a>
                 </td>
                 <td>
-                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID})">
+                    <a href="@Url.Action("Details", "Categories", new { id = item.CategoryID})">
                         @Html.DisplayFor(modelItem => item.Category.CategoryName)
                     </a>
                 </td>
                 <td>
-                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID})">
+                    <a href="@Url.Action("Details", "Manufacturers", new { id = item.ManufacturerID})">
                         @Html.DisplayFor(modelItem => item.Manufacturer.ManufacturerName)
                     </a>
                 </td>
