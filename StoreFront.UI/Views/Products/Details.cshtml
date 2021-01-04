@@ -132,16 +132,14 @@
                         <!-- Add to Cart -->
                         @*TODONE Add to Cart Functionality - Step 2
         TODO Html.Textbox???*@
-                        @using (Html.BeginForm("AddToCart", "Products", new { @productID = Model.ProductID }, FormMethod.Post, new { @class = "text-center" }))
+                        @using (Html.BeginForm("AddToCart", "Products", new { @productID = Model.ProductID }, FormMethod.Post, new { @class = "text-center d-flex justify-content-left" }))
                         {
                             @Html.HiddenFor(x => x.ProductID)
-                            @Html.TextBox("Qty", 1, new { @class = "form-control", @style = "width: 100px" })
-                            <input type="submit" value="Add to Cart" class="btn btn-priary btn-md my-0 p" name="qty" />
-            @*<input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">*@
-                            @*<button class="btn btn-primary btn-md my-0 p" type="submit" name="qty">
+                            @Html.TextBox("Qty", 1, new { @class = "form-control text-center", @style = "width: 50px" })
+                            <button class="btn btn-primary btn-md my-0 p" type="submit" name="qty">
                                 Add to cart
                                 <i class="fas fa-shopping-cart ml-1"></i>
-                            </button>*@
+                            </button>
                         }
                     @*</form>*@
                 </div>
@@ -157,12 +155,12 @@
                     </p>*@
             </div>
         </div>
-        @{ 
+        @*@{ 
             foreach (var item in Model)
             {
 
             }
-        }
+        }*@
         <div class="row wow fadeIn">
             <div class="col-lg-4 col-md-12 mb-4">
                 <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
