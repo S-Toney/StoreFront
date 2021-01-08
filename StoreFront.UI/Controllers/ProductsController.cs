@@ -39,6 +39,19 @@ namespace StoreFront.UI.Controllers
             }
             return View(product);
         }
+        //}
+
+        //public ActionResult Tablets()
+        //{
+            //var tabletName = from products in db.Products.Include(p => p.Category).Include(p => p.Manufacturer)
+            //                 where products.Category.CategoryID == 1
+            //                 select products.ProductName;
+
+            //var tabletImg = from products in db.Products.Include(p => p.Category).Include(p => p.Manufacturer)
+            //                where products.Category.CategoryID == 1
+            //                select products.Image;
+           
+        
 
         //TODONE Add to Cart Functionality - Step 3
         [HttpPost]

@@ -4,16 +4,17 @@
     <!-- Tablets -->
     <div class="row wow fadeIn">
         <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4 d-inline-block">
             @foreach (var item in Model)
             {
                 <!--Card-->
-                <div class="card">
+                <div class="card m-3 p-3">
                     <!--Card image-->
                     <div class="view overlay">
-                        <img src="~/Content/img/@item.Image" class="card-img-top"
-                             alt="@item.ProductName">
-                        <a>
+                        <a href="@Url.Action("Details", "Products", new { id = item.ProductID })">
+                            <img src="~/Content/img/@item.Image" class="card-img-top"
+                                 alt="@item.ProductName">
+
                             <div class="mask rgba-white-slight"></div>
                         </a>
                     </div>
@@ -22,18 +23,18 @@
                     <div class="card-body text-center">
                         <!--Category & Title-->
                         <a href="" class="grey-text">
-                            <h5>Shirt</h5>
+                            <h5 class="product-name">@item.ProductName</h5>
                         </a>
                         <h5>
-                            <strong>
+                            @*<strong>
                                 <a href="" class="dark-grey-text">
                                     Denim shirt
                                     <span class="badge badge-pill danger-color">NEW</span>
                                 </a>
-                            </strong>
+                            </strong>*@
                         </h5>
                         <h4 class="font-weight-bold blue-text">
-                            <strong>$120</strong>
+                            <strong>@($"{item.Price:c}")</strong>
                         </h4>
                     </div>
                     <!--Card content-->

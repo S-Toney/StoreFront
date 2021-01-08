@@ -1,6 +1,4 @@
-﻿
-
-/* Jumbotron CSS */
+﻿/* Jumbotron CSS */
 .slide1 {
     background-image: url('img/oldKeyboard.jpg');
     background-repeat: no-repeat;
@@ -59,6 +57,12 @@
 
 /* End Cutom Error 404 */
 
+/* Product Cards */
+.card h5.product-name {
+    overflow-wrap: normal;
+    max-width: 250px;
+}
+/* End Product Cards */
 .text-shadow-white {
     color: transparent;
     text-shadow: 5px 5px 3px #fff;
