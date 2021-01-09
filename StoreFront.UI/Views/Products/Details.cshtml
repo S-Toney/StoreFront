@@ -147,15 +147,74 @@
             </div>
         </div>
         <hr>
-        <div class="row d-flex justify-content-center wow fadeIn">
+        @*<div class="row d-flex justify-content-center wow fadeIn">
             <div class="col-md-6 text-center">
                 <h4 class="my-4 h4">More @Html.DisplayFor(model => model.Category.CategoryName)</h4>
             </div>
         </div>
-        @*
-            //TODO Add _ScrollingProducts here
 
-        
+        <div class="container-fluid">
+            <div class="row row-horizion">
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4">
+                <h2>Tablets</h2>
+                <section class="text-center mb-4 card-deck">
+                    <div class="horizontalScrolling">
+                        <div class="row text-center">
+                            @foreach (var p in Model)
+                            {
+                                if (p.CategoryID == Model.CategoryID)
+                                {
+                                    <!--Card-->
+                                    <div class="col-3 horizontalScrolling--box">
+                                        <div class="card m-3 p-3 h-100">
+                                            <!--Card image-->
+                                            <div class="view overlay">
+                                                <a href="@Url.Action("Details", "Products", new { id = p.ProductID })">
+                                                    <img src="~/Content/img/@p.Image" class="card-img-top"
+                                                         alt="@p.ProductName">
+
+                                                    <div class="mask rgba-white-slight"></div>
+                                                </a>
+                                            </div>
+                                            <!--Card image-->
+                                            <!--Card content-->
+                                            <div class="card-body text-center">
+                                                <!--Category & Title-->
+                                                <a href="" class="grey-text">
+                                                    <h5 class="product-name">@p.ProductName</h5>
+                                                </a>
+                                                <h5>
+                                                    @*<strong>
+                                                    <a href="" class="dark-grey-text">
+                                                        Denim shirt
+                                                        <span class="badge badge-pill danger-color">NEW</span>
+                                                    </a>
+                                                </strong>
+                                                </h5>
+                                                <h4 class="font-weight-bold blue-text">
+                                                    <strong>@($"{p.Price:c}")</strong>
+                                                </h4>
+                                            </div>
+                                            <!--Card content-->
+                                        </div>
+                                    </div>
+                                    <!--Card-->
+                                }
+                            }
+
+                        </div>
+                    </div>
+
+
+                    @{ Html.Hidden(model => model.Category.CategoryID == 1 >)}
+                @Html.Partial("~/Views/Products/_ScrollingProducts.cshtml", Model)
+                </section>
+                </div>
+            </div>
+        </div>*@
+
+        @*
         <div class="row wow fadeIn">
             <div class="col-lg-4 col-md-12 mb-4">
                 <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
