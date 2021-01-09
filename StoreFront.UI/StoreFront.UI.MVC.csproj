@@ -193,6 +193,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\CartItemViewModel.cs" />
+    <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Startup.cs" />
@@ -379,6 +380,7 @@
     <Content Include="Views\Errors\Index.cshtml" />
     <Content Include="Views\Errors\Throw404.cshtml" />
     <Content Include="Views\Products\_ScrollingProducts.cshtml" />
+    <Content Include="Views\Home\EmailConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

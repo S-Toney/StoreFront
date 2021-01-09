@@ -1,0 +1,22 @@
+﻿@model StoreFront.UI.Models.ContactViewModel
+@{
+    ViewBag.Title = "Message Sent";
+}
+<div class="container-fluid">
+    <hgroup>
+        <h2 class="text-uppercase mt-2">@ViewBag.Title</h2>
+        <h3>Thank you @Model.FirstName</h3>
+    </hgroup>
+    <p>
+        We have received your email and will respond at our earliest convienence. Details of your message are below.
+    </p>
+    <p>
+        Name: @Model.FirstName @Model.LastName
+        <br />
+        Email: @Model.Email
+        <br />
+        Subject: @Model.Subject
+        <br />
+        Message: @Model.Message
+    </p>
+</div>

@@ -11,6 +11,7 @@ using System.Drawing; //Image
 using StoreFront.UI.MVC.Models;
 using StoreFront.UI.Utilities;//Gives us access to the ImageService.cs
 using StoreFront.UI.Models;
+using System.Net.Mail;
 
 namespace StoreFront.UI.MVC.Controllers
 {
@@ -41,6 +42,46 @@ namespace StoreFront.UI.MVC.Controllers
         {
             ViewBag.RenderCarousel = true;
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Contact(ContactViewModel cvm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(cvm);
+            }
+
+            string emailBody = $"You have recieved an email from {cvm.FirstName} {cvm.LastName}<br /><br /> About {cvm.Subject}<br /><br />Message: {cvm.Message}<br /><br /> Please respond to {cvm.Email}";
+
+            MailMessage msg = new MailMessage
+                (
+                //From
+                "no-reply@tessatoney.com",
+                //To (Where the actual message is sent)
+                "stacy.toney@protonmail.com",
+                //Subject
+                "Email from Writer's Supply Contact Form",
+                //Body
+                emailBody
+                );
+
+            msg.IsBodyHtml = true;
+            SmtpClient client = new SmtpClient("mail.tessatoney.com");
+            client.Credentials = new NetworkCredential("no-reply@tessatoney.com", "20Cen$us20");//change to ******* before pushing to GitHub but use password for deploy
+            // SmptClient port = new SmtpClient("smtp.Port = 8889;");
+            try
+            {
+                client.Send(msg);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = $"Sorry, something went wrong. Error Message: {ex.Message}<br />{ex.StackTrace}";
+                return View(cvm);
+            }
+
+            return View("EmailConfirmation", cvm);
         }
 
         [HttpGet]
