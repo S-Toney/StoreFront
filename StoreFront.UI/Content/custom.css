@@ -64,6 +64,31 @@
     height: 100%;
 }
 
+.horizontalScrolling .row {
+    display: block;
+}
+
+.horizontalScrolling {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+    .horizontalScrolling .row {
+        display: block;
+    }
+
+    .horizontalScrolling .horizontalScrolling--box {
+        display: inline-block;
+        float: none;
+        padding: 15px;
+        border: 1px solid red;
+    }
+
+
+
+
+
 /*.card-body {
     min-height: 300px;
     min-width: 300px;
