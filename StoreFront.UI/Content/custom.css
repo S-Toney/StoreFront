@@ -23,6 +23,7 @@
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
+    display: inline;
 }
  .scrolling-wrapper.card {
     display: inline-block;
@@ -58,6 +59,9 @@
 /* End Cutom Error 404 */
 
 /* Product Cards */
+.card {
+    height: 100%;
+}
 .card h5.product-name {
     overflow-wrap: normal;
     max-width: 250px;

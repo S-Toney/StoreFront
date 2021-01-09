@@ -18,6 +18,16 @@ namespace StoreFront.UI.Controllers
     {
         private WritersSupplyEntities db = new WritersSupplyEntities();
 
+
+        public ActionResult Tablets()
+        {
+            List<Product> tablets = new List<Product>();
+
+            var t = from products in db.Products.Include(p => p.Category).Include(p => p.Manufacturer)
+                    where products.Category.CategoryID == 1
+                    select products.ProductID;
+            return View(tablets);
+        }
         // GET: Products
         public ActionResult Index()
         {
@@ -43,15 +53,15 @@ namespace StoreFront.UI.Controllers
 
         //public ActionResult Tablets()
         //{
-            //var tabletName = from products in db.Products.Include(p => p.Category).Include(p => p.Manufacturer)
-            //                 where products.Category.CategoryID == 1
-            //                 select products.ProductName;
+        //var tabletName = from products in db.Products.Include(p => p.Category).Include(p => p.Manufacturer)
+        //                 where products.Category.CategoryID == 1
+        //                 select products.ProductName;
 
-            //var tabletImg = from products in db.Products.Include(p => p.Category).Include(p => p.Manufacturer)
-            //                where products.Category.CategoryID == 1
-            //                select products.Image;
-           
-        
+        //var tabletImg = from products in db.Products.Include(p => p.Category).Include(p => p.Manufacturer)
+        //                where products.Category.CategoryID == 1
+        //                select products.Image;
+
+
 
         //TODONE Add to Cart Functionality - Step 3
         [HttpPost]
