@@ -25,9 +25,10 @@
     white-space: nowrap;
     display: inline;
 }
- .scrolling-wrapper.card {
-    display: inline-block;
-}
+
+    .scrolling-wrapper.card {
+        display: inline-block;
+    }
 /* End Scrolling Wrapper */
 
 /* Custom Error 404 */
@@ -62,7 +63,14 @@
 .card {
     height: 100%;
 }
-.card h5.product-name {
+
+/*.card-body {
+    min-height: 300px;
+    min-width: 300px;
+    margin-right: 5px;
+}*/
+
+.card.h5.product-name {
     overflow-wrap: normal;
     max-width: 250px;
 }
