@@ -97,5 +97,12 @@ namespace StoreFront.UI.MVC.Controllers
             ViewBag.RenderCarousel = true;
             return View();
         }
+
+        [HttpGet]
+        public ActionResult EmailConfirmation()
+        {
+            ViewBag.RenderCarousel = true;
+            return View();
+        }
     }
 }
