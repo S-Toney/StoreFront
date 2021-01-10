@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<StoreFront.DATA.EF.Category>
 
 @{
-    ViewBag.Title = "Categories";
+    ViewBag.Title = "WS Product Categories";
 }
 @*@{
         StoreFront.DATA.EF.WritersSupplyEntities ws = new StoreFront.DATA.EF.WritersSupplyEntities();
@@ -13,9 +13,11 @@
 
 <div class="p-2">
     <h2 class="mt-5">@ViewBag.Title</h2>
-    <p>
-        @Html.ActionLink("Create New", "Create")
+    <p class="row">
+        <button id="toggleCategoryCreate" class="btn btn-primary text-right pull left">Add New</button>
+        @*@Html.ActionLink("Create New", "Create")*@
     </p>
+    <div id="CategoryCreate">@Html.Partial("CategoryCreate", new StoreFront.DATA.EF.Category())</div>
 
     <table class="table">
         <tr>
@@ -33,10 +35,68 @@
                     <a href="@Url.Action("Details", "Categories", new { id = item.CategoryID})">@item.Products.Count()</a>
                 </td>
                 <td>
+                    @Ajax.ActionLink("Delete", "AjaxDelete", "Categories", new { id=item.CategoryID}, new AjaxOptions
+                    {
+                        HttpMethod = "POST",
+                        Confirm = $"Are you sure you want to delete {item.CategoryName} from the Categories table?",
+                        OnSuccess = "deleteConfirmed",
+                        OnFailure = "deleteFailed",
+                    } ) |
+
                     <a href="@Url.Action("Delete", "Categories", new { id = item.CategoryID })"><i class='fas fa-trash-alt'></i></a>
                 </td>
             </tr>
         }
     </table>
+    @section scripts {
+        <script>
+            /* AJAX DELETE */
+            function deleteConfirmed(response, status, data) {
+                var rowId = "#Category-" + response.id;
+                $("#MessageContent").html("<div class='alert alert-success'>" + response.message + "</div>");
+            }
 
+            function deleteFailed(response, status, data) {
+                $("#MessageContent").html("<div class='alert alert-danger'>Delete Unsuccessful. Is the Category associated with products? If so, change the product category or delete the product.</div>");
+            }
+
+            /* AJAX CREATE */
+            $("#CategoryCreate").hide();
+            $("#toggleCategoryCreate").click(function () {
+                $("#CategoryCreate").toggle();
+            });
+
+            $("CategoryCreateForm").submit(function (e) {
+                var formData = $(this).serializeArray();
+                console.log(formData);
+
+                $.ajax(
+                {
+                    url: "/Categories/AjaxCreate",
+                    type: "POST",
+                    data: formData,
+                    dataType: "json",
+                    error: function (e) {
+                        $("#MessageContent").html("<div class='alert alert-danger'>There was a problem!</div>");
+                    },
+                    success: function (foo) {
+                        $('#MessageContent').html("<div class='alert alert-success'>Category added!</del>");
+                        $("#CategoryCreateForm")[0].reset();
+                        $(function () {
+                            var row = '<tr><td>' + foo.CategoryName
+                            + '</td><td>' + foo.City
+                            + '</td><td>' + foo.State
+                            + '</td><td>' + (
+                            foo.IsActive
+                            )
+                        });
+                    }
+                }
+                );
+            });
+
+
+
+        </script>
+        }
 </div>
