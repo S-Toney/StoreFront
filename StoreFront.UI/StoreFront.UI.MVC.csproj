@@ -217,6 +217,7 @@
     <Content Include="Content\img\digitalDownload.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\img\englishEdit.jpg" />
     <Content Include="Content\img\fountainPen.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -382,6 +383,7 @@
     <Content Include="Views\Products\_ScrollingProducts.cshtml" />
     <Content Include="Views\Home\EmailConfirmation.cshtml" />
     <Content Include="Views\Categories\AjaxCreate.cshtml" />
+    <Content Include="Views\Errors\BadRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

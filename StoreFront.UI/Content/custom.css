@@ -56,8 +56,17 @@
     text-shadow: 5px 5px 3px #BBC7EF;
     font-size: 4em;
 }
-
 /* End Cutom Error 404 */
+
+/*  Custom Error Bad Request  */
+.englishEdit {
+    background-image: url('img/englishEdit.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+}
+
+/*  Custom Error Bad Request  */
 
 /* Product Cards */
 .card {

@@ -19,7 +19,7 @@
     </p>
     <div id="CategoryCreate">@Html.Partial("CategoryCreate", new StoreFront.DATA.EF.Category())</div>
 
-    <table class="table">
+    <table class="table" id="CategoriesTable">
         <tr>
             <th>Category</th>
             <th># of Products</th>
@@ -35,24 +35,25 @@
                     <a href="@Url.Action("Details", "Categories", new { id = item.CategoryID})">@item.Products.Count()</a>
                 </td>
                 <td>
-                    @Ajax.ActionLink("Delete", "AjaxDelete", "Categories", new { id=item.CategoryID}, new AjaxOptions
-                    {
+                    @Ajax.ActionLink("Delete", "AjaxDelete", "Categories", new { id = item.CategoryID}, new AjaxOptions {
                         HttpMethod = "POST",
                         Confirm = $"Are you sure you want to delete {item.CategoryName} from the Categories table?",
                         OnSuccess = "deleteConfirmed",
                         OnFailure = "deleteFailed",
                     } ) |
 
-                    <a href="@Url.Action("Delete", "Categories", new { id = item.CategoryID })"><i class='fas fa-trash-alt'></i></a>
+                    @*<a href="@Url.Action("Delete", "Categories", new { id = item.CategoryID })"><i class='fas fa-trash-alt'></i></a>*@
                 </td>
             </tr>
         }
     </table>
-    @section scripts {
-        <script>
+</div>
+@section scripts {
+    <script>
             /* AJAX DELETE */
             function deleteConfirmed(response, status, data) {
                 var rowId = "#Category-" + response.id;
+                $("#CategoriesTable").find(rowId).remove();
                 $("#MessageContent").html("<div class='alert alert-success'>" + response.message + "</div>");
             }
 
@@ -80,23 +81,17 @@
                         $("#MessageContent").html("<div class='alert alert-danger'>There was a problem!</div>");
                     },
                     success: function (foo) {
-                        $('#MessageContent').html("<div class='alert alert-success'>Category added!</del>");
+                        $("#MessageContent").html("<div class='alert alert-success'>Category added!</del>");
                         $("#CategoryCreateForm")[0].reset();
                         $(function () {
                             var row = '<tr><td>' + foo.CategoryName
-                            + '</td><td>' + foo.City
-                            + '</td><td>' + foo.State
-                            + '</td><td>' + (
-                            foo.IsActive
-                            )
+                            + '</td><td>Refresh to view options</td</tr>';
+                            $("CategoriesTable").append(row);
                         });
                     }
                 }
                 );
             });
 
-
-
-        </script>
-        }
-</div>
+    </script>
+}
