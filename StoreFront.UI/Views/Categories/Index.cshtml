@@ -17,7 +17,7 @@
         <button id="toggleCategoryCreate" class="btn btn-primary text-right pull left">Add New</button>
         @*@Html.ActionLink("Create New", "Create")*@
     </p>
-    <div id="CategoryCreate">@Html.Partial("CategoryCreate", new StoreFront.DATA.EF.Category())</div>
+    <div id="CategoryCreate">@Html.Partial("AjaxCreate", new StoreFront.DATA.EF.Category())</div>
 
     <table class="table" id="CategoriesTable">
         <tr>
@@ -27,7 +27,7 @@
         </tr>
         @foreach (var item in Model)
         {
-            <tr>
+            <tr id="Category-@item.CategoryID">
                 <td>
                     <a href="@Url.Action("Edit", "Categories", new { id = item.CategoryID })">@Html.DisplayFor(modelItem => item.CategoryName)</a>
                 </td>
@@ -67,10 +67,10 @@
                 $("#CategoryCreate").toggle();
             });
 
-            $("CategoryCreateForm").submit(function (e) {
+            $("#CategoryCreateForm").submit(function (e) {
                 var formData = $(this).serializeArray();
                 console.log(formData);
-
+                e.preventDefault();
                 $.ajax(
                 {
                     url: "/Categories/AjaxCreate",
@@ -81,12 +81,12 @@
                         $("#MessageContent").html("<div class='alert alert-danger'>There was a problem!</div>");
                     },
                     success: function (foo) {
-                        $("#MessageContent").html("<div class='alert alert-success'>Category added!</del>");
+                        $("#MessageContent").html("<div class='alert alert-success'>Category added!</div>");
                         $("#CategoryCreateForm")[0].reset();
                         $(function () {
                             var row = '<tr><td>' + foo.CategoryName
-                            + '</td><td>Refresh to view options</td</tr>';
-                            $("CategoriesTable").append(row);
+                            + '</td><td>Refresh to view options</td></tr>';
+                            $("#CategoriesTable").append(row);
                         });
                     }
                 }

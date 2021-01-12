@@ -16,7 +16,7 @@
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
-          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="CategoryName" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="Departments">
@@ -292,7 +292,7 @@
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
-          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Products" Relationship="WritersSupplyModel.FK_Products_Category" FromRole="Category" ToRole="Product" />
         </EntityType>

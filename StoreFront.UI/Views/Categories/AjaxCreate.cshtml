@@ -1,6 +1,6 @@
 ﻿@model StoreFront.DATA.EF.Category
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("", "", FormMethod.Post, new { id = "CategoryCreateForm" }))
 {
     @Html.AntiForgeryToken()
     
