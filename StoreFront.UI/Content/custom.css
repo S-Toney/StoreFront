@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 4em;
+    padding-top: 2em;
 }
 
 /* Admin Nav */
@@ -118,6 +118,12 @@ navbar nav {
         max-width: 250px;
     }
 /* End Product Cards */
+
+/* Shopping Cart */
+.cart-item {
+    vertical-align: middle;
+}
+/* End Shopping Cart */
 .text-shadow-white {
     color: transparent;
     text-shadow: 5px 5px 3px #fff;

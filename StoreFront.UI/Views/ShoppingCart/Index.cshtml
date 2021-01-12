@@ -1,13 +1,12 @@
 ﻿@model Dictionary<int, StoreFront.UI.Models.CartItemViewModel>
 @{
-    ViewBag.Title = "Cart";
+    ViewBag.Title = "Your Cart";
 
     decimal? cartTotal = 0;
     decimal promo = 5;
 }
 
-<h2>@ViewBag.Title</h2>
-<main class="pt-4">
+<main class="pt-2">
     <div class="container wow fadeIn">
         @if (Model.Count == 0)
         {
@@ -15,7 +14,7 @@
         }
         else
         {
-            <div class="row">
+            <div class="row align-middle">
                 <!-- Checkout Form -->
                 <div class="col-md-8 mb-4">
                     <!-- Card -->
@@ -179,10 +178,10 @@
                     <!-- End Card-->
                 </div>
                 <!-- End Checkout Form -->
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-4 align-middle">
                     <!-- Return to Shopping -->
                     <p class="text-center">
-                        @Html.ActionLink("Back to Shopping", "Index", "Products", null, new { @class = "btn btn-info" })
+                        @Html.ActionLink("Back to Shopping", "Index", "Home", null, new { @class = "btn btn-info" })
                     </p>
                     <!-- End Return to Shopping -->
                     <!-- Cart Heading -->
@@ -194,18 +193,20 @@
                     <ul class="list-group mb-3 z-depth-1">
                         @foreach (var item in Model)
                         {
-                            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>
-                                    @Html.TextBox("qty", item.Value.Qty, new { @class = "form-control", @style = "width: 50px" })
-                                    <a href="@Url.Action("RemoveFromCart")"><i class='fas fa-trash-alt'></i></a>
-                                    @*<img src="~/Content/img/@item.Value.Product.Image" />*@
-                                    <h6 class="my-0">t_@item.Value.Product.Image</h6>
-                                    @*<small class="text-muted">Brief description</small>*@
-                                </div>
-                                <span class="text-muted">
-                                    @(string.Format($"{(item.Value.Product.Price * item.Value.Qty):c}"))
-                                </span>
-                            </li>
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+
+                                
+                                <img src="~/Content/img/t_@item.Value.Product.Image" />
+                                @*<h6 class="my-0">t_@item.Value.Product.Image</h6>*@
+                                @*<small class="text-muted">Brief description</small>*@
+                            </div> 
+                            @Html.TextBox("qty", item.Value.Qty, new { @class = "form-control", @style = "width: 50px" })
+                            <span class="text-muted">
+                                @(string.Format($"{(item.Value.Product.Price * item.Value.Qty):c}"))
+                            </span>
+                            <a href="@Url.Action("RemoveFromCart")"><i class='fas fa-trash-alt'></i></a>
+                        </li>
                             cartTotal += ((item.Value.Product.Price * item.Value.Qty) - promo);
                         }
 
