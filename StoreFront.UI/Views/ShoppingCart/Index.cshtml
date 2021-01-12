@@ -195,7 +195,7 @@
                         @foreach (var item in Model)
                         {
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>                                    
+                                <div>
                                     @Html.TextBox("qty", item.Value.Qty, new { @class = "form-control", @style = "width: 50px" })
                                     <a href="@Url.Action("RemoveFromCart")"><i class='fas fa-trash-alt'></i></a>
                                     @*<img src="~/Content/img/@item.Value.Product.Image" />*@
@@ -203,7 +203,7 @@
                                     @*<small class="text-muted">Brief description</small>*@
                                 </div>
                                 <span class="text-muted">
-                                    @(string.Format($"{(item.Value.Product.Price * item.Value.Qty):c}"))                                    
+                                    @(string.Format($"{(item.Value.Product.Price * item.Value.Qty):c}"))
                                 </span>
                             </li>
                             cartTotal += ((item.Value.Product.Price * item.Value.Qty) - promo);
@@ -232,6 +232,8 @@
                             </div>
                         </div>
                     </form>
+                    @* //TODO Uncomment below after adding Promo Code Functionality
+                    <h6 class="text-primary small text-center pt-2">Type "EXAMPLECODE" to get a discount.</h6>*@
                     <!-- End Promo code -->
                 </div>
             </div>

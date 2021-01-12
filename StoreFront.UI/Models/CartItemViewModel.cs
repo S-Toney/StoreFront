@@ -19,5 +19,7 @@ namespace StoreFront.UI.Models
             Qty = qty;
             Product = product;
         }
+        //TODO  Promo Code functionality
+        //public string PromoCode { get; set; }
     }
 }
