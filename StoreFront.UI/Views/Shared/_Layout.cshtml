@@ -34,32 +34,50 @@
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link waves-effect" href="@Url.Action("index", "Products")">Products</a>
-                    </li>
+                    @*<li class="nav-item">
+                            <a class="nav-link waves-effect" href="@Url.Action("index", "Products")">Products</a>
+                        </li>*@
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Admin
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="@Url.Action("Index", "Products")">Products</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Categories")">Categories</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Manufacturers")">Manufacturers</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Orders")">Orders</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Departments")">Departments</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Employees")">Employees</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Roles")">Roles</a>
+                            </div>
+                        </li>
+                    }
                     <li class="nav-item">
                         <a class="nav-link waves-effect" href="@Url.Action("index", "ShoppingCart")" target="_blank">Checkout</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link waves-effect" href="@Url.Action("Contact", "Home")">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link waves-effect" href="@Url.Action("About", "Home")">About</a>
-                    </li>
-                    @*
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>
+                    @*<li class="nav-item">
+                            <a class="nav-link waves-effect" href="@Url.Action("About", "Home")">About</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
-                               target="_blank">Free download</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">
-                                Free
-                                tutorials
-                            </a>
-                        </li>*@
+
+                            <li class="nav-item">
+                                <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
+                                   target="_blank">Free download</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">
+                                    Free
+                                    tutorials
+                                </a>
+                            </li>*@
                 </ul>
                 <!-- Right -->
                 <ul class="navbar-nav nav-flex-icons">
@@ -111,11 +129,12 @@
         </div>
     </nav>
     <br clear="all">
+
     @if ((ViewBag.RenderCarousel != null) && ((bool)ViewBag.RenderCarousel))
     {
         @Html.Partial("_CarouselPartial")
     }
-    <div class="container-fluid">@RenderBody()</div>
+    <div class="container-fluid pt-5">@RenderBody()</div>
 
     <!--Footer-->
 

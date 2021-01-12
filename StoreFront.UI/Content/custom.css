@@ -1,4 +1,38 @@
-﻿/* Jumbotron CSS */
+﻿body {
+    padding-top: 4em;
+}
+
+/* Admin Nav */
+navbar nav {
+    flex-direction: row;
+}
+
+#AdminNav {
+    padding-top: 4em;
+    display: block;
+    justify-content: center;
+    background-color: #757F95;
+    color: white;
+}
+
+    #AdminNav ul {
+        list-style-type: none;
+        position: relative;
+        display: inline-block;
+    }
+
+    #AdminNav a {
+        color: white;
+    }
+
+        #AdminNav a:hover {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+/* End Admin Nav */
+
+/* Jumbotron CSS */
 .slide1 {
     background-image: url('img/oldKeyboard.jpg');
     background-repeat: no-repeat;
@@ -73,16 +107,16 @@
     height: 100%;
 }
 
-/*.card-body {
+    /*.card-body {
     min-height: 300px;
     min-width: 300px;
     margin-right: 5px;
 }*/
 
-.card.h5.product-name {
-    overflow-wrap: normal;
-    max-width: 250px;
-}
+    .card.h5.product-name {
+        overflow-wrap: normal;
+        max-width: 250px;
+    }
 /* End Product Cards */
 .text-shadow-white {
     color: transparent;
