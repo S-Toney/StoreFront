@@ -39,3 +39,11 @@ setTimeout(function(){
 //        $('#404-2').removeClass('gone-out').addClass('gone-in');
 //    }
 //}, 2000);
+
+// Custom Error 404 
+
+setTimeout(function () {
+    if ($('#400-2').hasClass('gone')) {
+        $('#400-2').addClass('spelling-in');
+    }
+}, 4500);

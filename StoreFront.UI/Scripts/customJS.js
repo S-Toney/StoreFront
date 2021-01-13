@@ -52,3 +52,20 @@ typewriter.typeString("The page")
 //}
 
 //addEventListener(onload, goneBlink());
+
+//Custom Error Page 400
+var error400 = document.getElementById('400-1');
+var typewriter = new Typewriter(error400, {
+    loop: false
+    //strings: ['The page...'],
+    //autoStart: true
+});
+
+typewriter.typeString("Please check")
+.pauseFor(700)
+.typeString('.')
+.pauseFor(700)
+.typeString('.')
+.pauseFor(700)
+.typeString('.')
+.start();

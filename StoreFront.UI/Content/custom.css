@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 2em;
+    padding-top: .5em;
 }
 
 /* Admin Nav */
@@ -93,11 +93,19 @@ navbar nav {
 /* End Cutom Error 404 */
 
 /*  Custom Error Bad Request  */
-.englishEdit {
-    background-image: url('img/englishEdit.jpg');
+#EnglishEdit {
+    background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('img/bgEnglishEdit.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    width: 100%;
+    height: 100%;
     background-position-x: center;
+}
+
+.spelling-in {
+    color: #ff0000;
+    text-shadow: 3px 3px 3px #000;
+    font-size: 4em;
 }
 
 /*  Custom Error Bad Request  */
@@ -129,13 +137,27 @@ navbar nav {
     text-shadow: 5px 5px 3px #fff;
 }
 
+.text-shadow-red {
+    color: transparent;
+    text-shadow: 5px 5px 3px #FF0000;
+}
+
 .white-text-blue-shadow {
     color: #fff;
     text-shadow: 3px 3px 3px #BBC7EF;
 }
 
+.red-text-black-shadow {
+    color: #FF0000;
+    text-shadow: 3px 3px 3px #000;
+}
+
 .text-white {
     color: #fff;
+}
+
+.text-red {
+    color: #FF0000;
 }
 
 .text-half {

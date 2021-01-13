@@ -55,5 +55,10 @@ namespace StoreFront.UI.Controllers
         {
             return View();
         }
+
+        public ActionResult BadRequest()
+        {
+            return View();
+        }
     }
 }
