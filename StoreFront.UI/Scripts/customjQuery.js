@@ -10,7 +10,8 @@
 
 // Custom Error 404 
 
-setTimeout(function(){
+setTimeout(function () {
+    //If CSS class .gone then change to .gone-in after 4.5 seconds
     if ($('#404-2').hasClass('gone')) {
         $('#404-2').addClass('gone-in');
     }
@@ -47,3 +48,24 @@ setTimeout(function () {
         $('#400-2').addClass('spelling-in');
     }
 }, 4500);
+
+// Custom Error Default - REDIRECT
+
+//var seconds = 10;
+
+//function countdown() {
+//    seconds = secongs - 1;
+//    if (seconds < 0) {
+//        //Link to Redirect user to
+//        window.location = "https://tessatoney.com";
+//    } else {
+//        //Remaining Seconds Update
+//        document.getElementById("Countdown").innerHTML = seconds;
+//        //Cound Down
+//        window.setTimeout("countdown()", 1000);
+//    }
+
+//}
+
+////Run Countdown
+//countdown();

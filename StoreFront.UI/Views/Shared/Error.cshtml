@@ -4,7 +4,30 @@
     ViewBag.Title = "Error";
 }
 
-<hgroup>
-    <h1 class="text-error">Error.</h1>
+<hgroup class="text-center p-3 push-h">
     <h2 class="text-error">An error occurred while processing your request.</h2>
+    <h1 class="m-3">Redirecting in <span id="Countdown" class="text-red">10</span> seconds</h1>
 </hgroup>
+
+<script type="text/javascript">
+
+    // Total seconds to wait
+    let seconds = 10;
+
+    function countdown() {
+        seconds = seconds - 1;
+        if (seconds < 0) {
+            // Redirect to Link
+            window.location = "http://writerssupply.tessatoney.com";
+        } else {
+            // Update remaining seconds
+            document.getElementById("Countdown").innerHTML = seconds;
+            // Count down using javascript
+            window.setTimeout("countdown()", 1000);
+        }
+    }
+
+    // Run countdown function
+    countdown();
+
+</script>
