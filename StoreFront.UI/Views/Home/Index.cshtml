@@ -18,22 +18,22 @@
                 <!-- Links -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">
+                        @*<a class="nav-link" href="#">
                             All
                             <span class="sr-only">(current)</span>
-                        </a>
+                        </a>*@
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tablets</a>
+                        <a class="nav-link" href="#Tablets">Tablets</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Accessories</a>
+                        <a class="nav-link" href="#Accessories">Accessories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Stationary</a>
+                        <a class="nav-link" href="#Stationary">Stationary</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pens</a>
+                        <a class="nav-link" href="#Pens">Pens</a>
                     </li>
                 </ul>
                 <!-- End Links -->
@@ -49,7 +49,7 @@
         <div id="greeting"></div>
         <!--Section: Products v.3-->
         <!-- Tablets -->
-        <div class="container-fluid">
+        <div class="container-fluid" id="Tablets">
             <div class="row row-horizion" @*"d-flex flex-row flex-nowrap overflow-auto"*@ @*"row wow fadeIn d-inline"*@>
                 <!--Grid column-->
                 @*<div class="col-lg-3 col-md-6 mb-4">*@
@@ -111,7 +111,7 @@
         </div>
 
         <!-- Accessories -->
-        <div class="container-fluid">
+        <div class="container-fluid" id="Accessories">
             <div class="row row-horizion" @*"d-flex flex-row flex-nowrap overflow-auto"*@ @*"row wow fadeIn d-inline"*@>
                 <!--Grid column-->
                 @*<div class="col-lg-3 col-md-6 mb-4">*@
@@ -173,7 +173,7 @@
         </div>
 
         <!-- Stationary -->
-        <div class="container-fluid">
+        <div class="container-fluid" id="Stationary">
             <div class="row row-horizion" @*"d-flex flex-row flex-nowrap overflow-auto"*@ @*"row wow fadeIn d-inline"*@>
                 <!--Grid column-->
                 @*<div class="col-lg-3 col-md-6 mb-4">*@
@@ -235,11 +235,11 @@
         </div>
 
         <!-- Pens -->
-        <div class="container-fluid">
+        <div class="container-fluid" id="Pens">
             <div class="row row-horizion" @*"d-flex flex-row flex-nowrap overflow-auto"*@ @*"row wow fadeIn d-inline"*@>
                 <!--Grid column-->
                 @*<div class="col-lg-3 col-md-6 mb-4">*@
-                <h2>Tablets</h2>
+                <h2>Pens</h2>
                 <section class="text-center mb-4 card-deck" @*scrolling-wrapper flex-row*@>
                     <div class="horizontalScrolling">
                         <div class="row text-center">
@@ -296,292 +296,295 @@
             </div>
         </div>
 
-        @*<section class="text-center mb-4">
+        @{ #region template cards
+            //<section class="text-center mb-4">
 
-            <div class="row wow fadeIn">
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <!--Card-->
-                    <div class="card">
-                        <!--Card image-->
-                        <div class="view overlay">
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top"
-                                 alt="">
-                            <a>
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
-                        </div>
-                        <!--Card image-->
-                        <!--Card content-->
-                        <div class="card-body text-center">
-                            <!--Category & Title-->
-                            <a href="" class="grey-text">
-                                <h5>Shirt</h5>
-                            </a>
-                            <h5>
-                                <strong>
-                                    <a href="" class="dark-grey-text">
-                                        Denim shirt
-                                        <span class="badge badge-pill danger-color">NEW</span>
-                                    </a>
-                                </strong>
-                            </h5>
-                            <h4 class="font-weight-bold blue-text">
-                                <strong>$120</strong>
-                            </h4>
-                        </div>
-                        <!--Card content-->
-                    </div>
-                    <!--Card-->
-                </div>
-                <!--Grid column-->
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <!--Card-->
-                    <div class="card">
-                        <!--Card image-->
-                        <div class="view overlay">
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg" class="card-img-top"
-                                 alt="">
-                            <a>
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
-                        </div>
-                        <!--Card image-->
-                        <!--Card content-->
-                        <div class="card-body text-center">
-                            <!--Category & Title-->
-                            <a href="" class="grey-text">
-                                <h5>Sport wear</h5>
-                            </a>
-                            <h5>
-                                <strong>
-                                    <a href="" class="dark-grey-text">Sweatshirt</a>
-                                </strong>
-                            </h5>
-                            <h4 class="font-weight-bold blue-text">
-                                <strong>$139</strong>
-                            </h4>
-                        </div>
-                        <!--Card content-->
-                    </div>
-                    <!--Card-->
-                </div>
-                <!--Grid column-->
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <!--Card-->
-                    <div class="card">
-                        <!--Card image-->
-                        <div class="view overlay">
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14.jpg" class="card-img-top"
-                                 alt="">
-                            <a>
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
-                        </div>
-                        <!--Card image-->
-                        <!--Card content-->
-                        <div class="card-body text-center">
-                            <!--Category & Title-->
-                            <a href="" class="grey-text">
-                                <h5>Sport wear</h5>
-                            </a>
-                            <h5>
-                                <strong>
-                                    <a href="" class="dark-grey-text">
-                                        Grey blouse
-                                        <span class="badge badge-pill primary-color">bestseller</span>
-                                    </a>
-                                </strong>
-                            </h5>
-                            <h4 class="font-weight-bold blue-text">
-                                <strong>$99</strong>
-                            </h4>
-                        </div>
-                        <!--Card content-->
-                    </div>
-                    <!--Card-->
-                </div>
-                <!--Grid column-->
-                <!--Fourth column-->
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <!--Card-->
-                    <div class="card">
-                        <!--Card image-->
-                        <div class="view overlay">
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15.jpg" class="card-img-top"
-                                 alt="">
-                            <a>
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
-                        </div>
-                        <!--Card image-->
-                        <!--Card content-->
-                        <div class="card-body text-center">
-                            <!--Category & Title-->
-                            <a href="" class="grey-text">
-                                <h5>Outwear</h5>
-                            </a>
-                            <h5>
-                                <strong>
-                                    <a href="" class="dark-grey-text">Black jacket</a>
-                                </strong>
-                            </h5>
-                            <h4 class="font-weight-bold blue-text">
-                                <strong>$219</strong>
-                            </h4>
-                        </div>
-                        <!--Card content-->
-                    </div>
-                    <!--Card-->
-                </div>
-                <!--Fourth column-->
-            </div>
-            <!-- End Tablets -->
-            <!-- Accessories -->
-            <div class="row wow fadeIn">
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <!--Card-->
-                    <div class="card">
-                        <!--Card image-->
-                        <div class="view overlay">
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg" class="card-img-top"
-                                 alt="">
-                            <a>
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
-                        </div>
-                        <!--Card image-->
-                        <!--Card content-->
-                        <div class="card-body text-center">
-                            <!--Category & Title-->
-                            <a href="" class="grey-text">
-                                <h5>Shirt</h5>
-                            </a>
-                            <h5>
-                                <strong>
-                                    <a href="" class="dark-grey-text">
-                                        Denim shirt
-                                        <span class="badge badge-pill danger-color">NEW</span>
-                                    </a>
-                                </strong>
-                            </h5>
-                            <h4 class="font-weight-bold blue-text">
-                                <strong>$120</strong>
-                            </h4>
-                        </div>
-                        <!--Card content-->
-                    </div>
-                    <!--Card-->
-                </div>
-                <!--Grid column-->
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <!--Card-->
-                    <div class="card">
-                        <!--Card image-->
-                        <div class="view overlay">
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14.jpg" class="card-img-top"
-                                 alt="">
-                            <a>
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
-                        </div>
-                        <!--Card image-->
-                        <!--Card content-->
-                        <div class="card-body text-center">
-                            <!--Category & Title-->
-                            <a href="" class="grey-text">
-                                <h5>Sport wear</h5>
-                            </a>
-                            <h5>
-                                <strong>
-                                    <a href="" class="dark-grey-text">Sweatshirt</a>
-                                </strong>
-                            </h5>
-                            <h4 class="font-weight-bold blue-text">
-                                <strong>$139</strong>
-                            </h4>
-                        </div>
-                        <!--Card content-->
-                    </div>
-                    <!--Card-->
-                </div>
-                <!--Grid column-->
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <!--Card-->
-                    <div class="card">
-                        <!--Card image-->
-                        <div class="view overlay">
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15.jpg" class="card-img-top"
-                                 alt="">
-                            <a>
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
-                        </div>
-                        <!--Card image-->
-                        <!--Card content-->
-                        <div class="card-body text-center">
-                            <!--Category & Title-->
-                            <a href="" class="grey-text">
-                                <h5>Sport wear</h5>
-                            </a>
-                            <h5>
-                                <strong>
-                                    <a href="" class="dark-grey-text">
-                                        Grey blouse
-                                        <span class="badge badge-pill primary-color">bestseller</span>
-                                    </a>
-                                </strong>
-                            </h5>
-                            <h4 class="font-weight-bold blue-text">
-                                <strong>$99</strong>
-                            </h4>
-                        </div>
-                        <!--Card content-->
-                    </div>
-                    <!--Card-->
-                </div>
-                <!--Grid column-->
-                <!--Fourth column-->
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <!--Card-->
-                    <div class="card">
-                        <!--Card image-->
-                        <div class="view overlay">
-                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top"
-                                 alt="">
-                            <a>
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
-                        </div>
-                        <!--Card image-->
-                        <!--Card content-->
-                        <div class="card-body text-center">
-                            <!--Category & Title-->
-                            <a href="" class="grey-text">
-                                <h5>Outwear</h5>
-                            </a>
-                            <h5>
-                                <strong>
-                                    <a href="" class="dark-grey-text">Black jacket</a>
-                                </strong>
-                            </h5>
-                            <h4 class="font-weight-bold blue-text">
-                                <strong>$219</strong>
-                            </h4>
-                        </div>
-                        <!--Card content-->
-                    </div>
-                    <!--Card-->
-                </div>
-                <!--Fourth column-->
-            </div>
-            <!--Grid row-->
-        </section>*@
+            //    <div class="row wow fadeIn">
+            //        <!--Grid column-->
+            //        <div class="col-lg-3 col-md-6 mb-4">
+            //            <!--Card-->
+            //            <div class="card">
+            //                <!--Card image-->
+            //                <div class="view overlay">
+            //                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top"
+            //                         alt="">
+            //                    <a>
+            //                        <div class="mask rgba-white-slight"></div>
+            //                    </a>
+            //                </div>
+            //                <!--Card image-->
+            //                <!--Card content-->
+            //                <div class="card-body text-center">
+            //                    <!--Category & Title-->
+            //                    <a href="" class="grey-text">
+            //                        <h5>Shirt</h5>
+            //                    </a>
+            //                    <h5>
+            //                        <strong>
+            //                            <a href="" class="dark-grey-text">
+            //                                Denim shirt
+            //                                <span class="badge badge-pill danger-color">NEW</span>
+            //                            </a>
+            //                        </strong>
+            //                    </h5>
+            //                    <h4 class="font-weight-bold blue-text">
+            //                        <strong>$120</strong>
+            //                    </h4>
+            //                </div>
+            //                <!--Card content-->
+            //            </div>
+            //            <!--Card-->
+            //        </div>
+            //        <!--Grid column-->
+            //        <!--Grid column-->
+            //        <div class="col-lg-3 col-md-6 mb-4">
+            //            <!--Card-->
+            //            <div class="card">
+            //                <!--Card image-->
+            //                <div class="view overlay">
+            //                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg" class="card-img-top"
+            //                         alt="">
+            //                    <a>
+            //                        <div class="mask rgba-white-slight"></div>
+            //                    </a>
+            //                </div>
+            //                <!--Card image-->
+            //                <!--Card content-->
+            //                <div class="card-body text-center">
+            //                    <!--Category & Title-->
+            //                    <a href="" class="grey-text">
+            //                        <h5>Sport wear</h5>
+            //                    </a>
+            //                    <h5>
+            //                        <strong>
+            //                            <a href="" class="dark-grey-text">Sweatshirt</a>
+            //                        </strong>
+            //                    </h5>
+            //                    <h4 class="font-weight-bold blue-text">
+            //                        <strong>$139</strong>
+            //                    </h4>
+            //                </div>
+            //                <!--Card content-->
+            //            </div>
+            //            <!--Card-->
+            //        </div>
+            //        <!--Grid column-->
+            //        <!--Grid column-->
+            //        <div class="col-lg-3 col-md-6 mb-4">
+            //            <!--Card-->
+            //            <div class="card">
+            //                <!--Card image-->
+            //                <div class="view overlay">
+            //                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14.jpg" class="card-img-top"
+            //                         alt="">
+            //                    <a>
+            //                        <div class="mask rgba-white-slight"></div>
+            //                    </a>
+            //                </div>
+            //                <!--Card image-->
+            //                <!--Card content-->
+            //                <div class="card-body text-center">
+            //                    <!--Category & Title-->
+            //                    <a href="" class="grey-text">
+            //                        <h5>Sport wear</h5>
+            //                    </a>
+            //                    <h5>
+            //                        <strong>
+            //                            <a href="" class="dark-grey-text">
+            //                                Grey blouse
+            //                                <span class="badge badge-pill primary-color">bestseller</span>
+            //                            </a>
+            //                        </strong>
+            //                    </h5>
+            //                    <h4 class="font-weight-bold blue-text">
+            //                        <strong>$99</strong>
+            //                    </h4>
+            //                </div>
+            //                <!--Card content-->
+            //            </div>
+            //            <!--Card-->
+            //        </div>
+            //        <!--Grid column-->
+            //        <!--Fourth column-->
+            //        <div class="col-lg-3 col-md-6 mb-4">
+            //            <!--Card-->
+            //            <div class="card">
+            //                <!--Card image-->
+            //                <div class="view overlay">
+            //                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15.jpg" class="card-img-top"
+            //                         alt="">
+            //                    <a>
+            //                        <div class="mask rgba-white-slight"></div>
+            //                    </a>
+            //                </div>
+            //                <!--Card image-->
+            //                <!--Card content-->
+            //                <div class="card-body text-center">
+            //                    <!--Category & Title-->
+            //                    <a href="" class="grey-text">
+            //                        <h5>Outwear</h5>
+            //                    </a>
+            //                    <h5>
+            //                        <strong>
+            //                            <a href="" class="dark-grey-text">Black jacket</a>
+            //                        </strong>
+            //                    </h5>
+            //                    <h4 class="font-weight-bold blue-text">
+            //                        <strong>$219</strong>
+            //                    </h4>
+            //                </div>
+            //                <!--Card content-->
+            //            </div>
+            //            <!--Card-->
+            //        </div>
+            //        <!--Fourth column-->
+            //    </div>
+            //    <!-- End Tablets -->
+            //    <!-- Accessories -->
+            //    <div class="row wow fadeIn">
+            //        <!--Grid column-->
+            //        <div class="col-lg-3 col-md-6 mb-4">
+            //            <!--Card-->
+            //            <div class="card">
+            //                <!--Card image-->
+            //                <div class="view overlay">
+            //                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg" class="card-img-top"
+            //                         alt="">
+            //                    <a>
+            //                        <div class="mask rgba-white-slight"></div>
+            //                    </a>
+            //                </div>
+            //                <!--Card image-->
+            //                <!--Card content-->
+            //                <div class="card-body text-center">
+            //                    <!--Category & Title-->
+            //                    <a href="" class="grey-text">
+            //                        <h5>Shirt</h5>
+            //                    </a>
+            //                    <h5>
+            //                        <strong>
+            //                            <a href="" class="dark-grey-text">
+            //                                Denim shirt
+            //                                <span class="badge badge-pill danger-color">NEW</span>
+            //                            </a>
+            //                        </strong>
+            //                    </h5>
+            //                    <h4 class="font-weight-bold blue-text">
+            //                        <strong>$120</strong>
+            //                    </h4>
+            //                </div>
+            //                <!--Card content-->
+            //            </div>
+            //            <!--Card-->
+            //        </div>
+            //        <!--Grid column-->
+            //        <!--Grid column-->
+            //        <div class="col-lg-3 col-md-6 mb-4">
+            //            <!--Card-->
+            //            <div class="card">
+            //                <!--Card image-->
+            //                <div class="view overlay">
+            //                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14.jpg" class="card-img-top"
+            //                         alt="">
+            //                    <a>
+            //                        <div class="mask rgba-white-slight"></div>
+            //                    </a>
+            //                </div>
+            //                <!--Card image-->
+            //                <!--Card content-->
+            //                <div class="card-body text-center">
+            //                    <!--Category & Title-->
+            //                    <a href="" class="grey-text">
+            //                        <h5>Sport wear</h5>
+            //                    </a>
+            //                    <h5>
+            //                        <strong>
+            //                            <a href="" class="dark-grey-text">Sweatshirt</a>
+            //                        </strong>
+            //                    </h5>
+            //                    <h4 class="font-weight-bold blue-text">
+            //                        <strong>$139</strong>
+            //                    </h4>
+            //                </div>
+            //                <!--Card content-->
+            //            </div>
+            //            <!--Card-->
+            //        </div>
+            //        <!--Grid column-->
+            //        <!--Grid column-->
+            //        <div class="col-lg-3 col-md-6 mb-4">
+            //            <!--Card-->
+            //            <div class="card">
+            //                <!--Card image-->
+            //                <div class="view overlay">
+            //                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15.jpg" class="card-img-top"
+            //                         alt="">
+            //                    <a>
+            //                        <div class="mask rgba-white-slight"></div>
+            //                    </a>
+            //                </div>
+            //                <!--Card image-->
+            //                <!--Card content-->
+            //                <div class="card-body text-center">
+            //                    <!--Category & Title-->
+            //                    <a href="" class="grey-text">
+            //                        <h5>Sport wear</h5>
+            //                    </a>
+            //                    <h5>
+            //                        <strong>
+            //                            <a href="" class="dark-grey-text">
+            //                                Grey blouse
+            //                                <span class="badge badge-pill primary-color">bestseller</span>
+            //                            </a>
+            //                        </strong>
+            //                    </h5>
+            //                    <h4 class="font-weight-bold blue-text">
+            //                        <strong>$99</strong>
+            //                    </h4>
+            //                </div>
+            //                <!--Card content-->
+            //            </div>
+            //            <!--Card-->
+            //        </div>
+            //        <!--Grid column-->
+            //        <!--Fourth column-->
+            //        <div class="col-lg-3 col-md-6 mb-4">
+            //            <!--Card-->
+            //            <div class="card">
+            //                <!--Card image-->
+            //                <div class="view overlay">
+            //                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top"
+            //                         alt="">
+            //                    <a>
+            //                        <div class="mask rgba-white-slight"></div>
+            //                    </a>
+            //                </div>
+            //                <!--Card image-->
+            //                <!--Card content-->
+            //                <div class="card-body text-center">
+            //                    <!--Category & Title-->
+            //                    <a href="" class="grey-text">
+            //                        <h5>Outwear</h5>
+            //                    </a>
+            //                    <h5>
+            //                        <strong>
+            //                            <a href="" class="dark-grey-text">Black jacket</a>
+            //                        </strong>
+            //                    </h5>
+            //                    <h4 class="font-weight-bold blue-text">
+            //                        <strong>$219</strong>
+            //                    </h4>
+            //                </div>
+            //                <!--Card content-->
+            //            </div>
+            //            <!--Card-->
+            //        </div>
+            //        <!--Fourth column-->
+            //    </div>
+            //    <!--Grid row-->
+            //</section>
+            #endregion   }
+
         <!--Section: Products v.3-->
         <!-- Pagination -->
         <nav class="d-flex justify-content-center wow fadeIn">
