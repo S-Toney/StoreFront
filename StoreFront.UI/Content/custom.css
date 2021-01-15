@@ -111,8 +111,8 @@ navbar nav {
 /*  Custom Error Bad Request  */
 
 /* Product Cards */
-.card {
-    /*height: 100%;*/
+.p-card {
+    min-width: 200px;
 }
 
     /*.card-body {

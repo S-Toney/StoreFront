@@ -53,7 +53,7 @@
             <div class="row row-horizion" @*"d-flex flex-row flex-nowrap overflow-auto"*@ @*"row wow fadeIn d-inline"*@>
                 <!--Grid column-->
                 @*<div class="col-lg-3 col-md-6 mb-4">*@
-                <h2>Tablets</h2>
+                <h2 class="m-2 text-muted">Tablets</h2>
                 <section class="text-center mb-4 card-deck" @*scrolling-wrapper flex-row*@>
                     <div class="horizontalScrolling">
                         <div class="row text-center">
@@ -63,7 +63,7 @@
                                 {
                                     <!--Card-->
                                     <div class="col-3 horizontalScrolling--box">
-                                        <div class="card m-3 p-3 h-100">
+                                        <div class="card p-card m-3 p-3 h-100">
                                             <!--Card image-->
                                             <div class="view overlay">
                                                 <a href="@Url.Action("Details", "Products", new { id = p.ProductID })">
@@ -115,7 +115,7 @@
             <div class="row row-horizion" @*"d-flex flex-row flex-nowrap overflow-auto"*@ @*"row wow fadeIn d-inline"*@>
                 <!--Grid column-->
                 @*<div class="col-lg-3 col-md-6 mb-4">*@
-                <h2>Accessories</h2>
+                <h2 class="m-2 text-muted">Accessories</h2>
                 <section class="text-center mb-4 card-deck" @*scrolling-wrapper flex-row*@>
                     <div class="horizontalScrolling">
                         <div class="row text-center">
@@ -125,7 +125,7 @@
                                 {
                                     <!--Card-->
                                     <div class="col-3 horizontalScrolling--box">
-                                        <div class="card m-3 p-3 h-100">
+                                        <div class="card p-card m-3 p-3 h-100">
                                             <!--Card image-->
                                             <div class="view overlay">
                                                 <a href="@Url.Action("Details", "Products", new { id = p.ProductID })">
@@ -177,7 +177,7 @@
             <div class="row row-horizion" @*"d-flex flex-row flex-nowrap overflow-auto"*@ @*"row wow fadeIn d-inline"*@>
                 <!--Grid column-->
                 @*<div class="col-lg-3 col-md-6 mb-4">*@
-                <h2>Stationary</h2>
+                <h2 class="m-2 text-muted">Stationary</h2>
                 <section class="text-center mb-4 card-deck" @*scrolling-wrapper flex-row*@>
                     <div class="horizontalScrolling">
                         <div class="row text-center">
@@ -186,7 +186,7 @@
                                 if (p.CategoryID == 3)
                                 {
                                     <!--Card-->
-                                    <div class="col-3 horizontalScrolling--box">
+                                    <div class="col-3 p-card horizontalScrolling--box">
                                         <div class="card m-3 p-3 h-100">
                                             <!--Card image-->
                                             <div class="view overlay">
@@ -239,7 +239,7 @@
             <div class="row row-horizion" @*"d-flex flex-row flex-nowrap overflow-auto"*@ @*"row wow fadeIn d-inline"*@>
                 <!--Grid column-->
                 @*<div class="col-lg-3 col-md-6 mb-4">*@
-                <h2>Pens</h2>
+                <h2 class="m-2 text-muted">Pens</h2>
                 <section class="text-center mb-4 card-deck" @*scrolling-wrapper flex-row*@>
                     <div class="horizontalScrolling">
                         <div class="row text-center">
@@ -249,7 +249,7 @@
                                 {
                                     <!--Card-->
                                     <div class="col-3 horizontalScrolling--box">
-                                        <div class="card m-3 p-3 h-100">
+                                        <div class="card p-card m-3 p-3 h-100">
                                             <!--Card image-->
                                             <div class="view overlay">
                                                 <a href="@Url.Action("Details", "Products", new { id = p.ProductID })">
@@ -587,7 +587,7 @@
 
         <!--Section: Products v.3-->
         <!-- Pagination -->
-        <nav class="d-flex justify-content-center wow fadeIn">
+        <nav class="d-flex justify-content-center wow fadeIn mt-3">
             <ul class="pagination pg-blue">
                 <!--Arrow left-->
                 <li class="page-item disabled">
