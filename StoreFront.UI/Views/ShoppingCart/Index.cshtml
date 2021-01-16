@@ -197,7 +197,7 @@
                             <div>
 
                                 
-                                <img src="~/Content/img/t_@item.Value.Product.Image" />
+                                <a href="@Url.Action("Details", "Products", new { id = item.Value.Product.ProductID })"><img src="~/Content/img/t_@item.Value.Product.Image" /></a>
                                 @*<h6 class="my-0">t_@item.Value.Product.Image</h6>*@
                                 @*<small class="text-muted">Brief description</small>*@
                             </div> 
@@ -205,9 +205,9 @@
                             <span class="text-muted">
                                 @(string.Format($"{(item.Value.Product.Price * item.Value.Qty):c}"))
                             </span>
-                            <a href="@Url.Action("RemoveFromCart")"><i class='fas fa-trash-alt'></i></a>
+                            <a href="@Url.Action("RemoveFromCart", "ShoppingCart", new { id=item.Value.Product.ProductID} )"><i class='fas fa-trash-alt'></i></a>
                         </li>
-                            cartTotal += ((item.Value.Product.Price * item.Value.Qty) - promo);
+                            cartTotal += (item.Value.Product.Price * item.Value.Qty);
                         }
 
                         <li class="list-group-item d-flex justify-content-between bg-light">
@@ -220,6 +220,7 @@
                         <!-- Cart Total -->
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Total (USD)</span>
+                            @{ cartTotal = cartTotal - promo;}
                             <strong>@String.Format($"{cartTotal:c}")</strong>
                         </li>
                     </ul>

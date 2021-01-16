@@ -168,6 +168,7 @@ namespace StoreFront.DATA.EF//.Metadata
             public int Availability { get; set; }
 
             [StringLength(50, ErrorMessage = "* Must be 50 characters or less")]
+            [UIHint("Multiline")]
             [Display(Name = "Description")]
             public string Description { get; set; }
 
