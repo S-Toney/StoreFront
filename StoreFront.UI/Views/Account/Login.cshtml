@@ -1,20 +1,20 @@
 ﻿@*using MDBEcommerce.Models*@
 @using StoreFront.UI.MVC.Models;
 @model LoginViewModel
+    @{ 
+        ViewBag.Title = "Login";
+    }
 
 <main class="mt-5 pt-4">
     <div class="container my-5 py-5 z-depth-1 mt-5">
-        <!--Section: Content-->
         <section class="px-md-5 mx-md-5 text-center text-lg-left dark-grey-text">
-            <!--Grid row-->
             <div class="row d-flex justify-content-center">
-                <!--Grid column-->
                 <div class="col-md-6">
-                    <!-- Default form login -->
+                    <!-- Login Form -->
                     @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "text-center", role = "form" }))
                     {
                         @Html.AntiForgeryToken()
-                        <p class="h4 mb-4">Login</p>
+                        <p class="h4 mb-4">@ViewBag.Title</p>
 
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <!-- Email -->
@@ -33,10 +33,10 @@
                                     <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
                                 </div>
                             </div>
-                            <div>
-                                <!-- Forgot password -->
-                                <a href="">Forgot password?</a>
-                            </div>
+                            <!-- <div>
+                                Forgot password
+    <a href="">Forgot password?</a>
+                        </div>-->
                         </div>
 
                         <!-- Sign in button -->
@@ -47,25 +47,10 @@
                             Not a member?
                             @Html.ActionLink("Register", "Register")
                         </p>
-
-                        <!-- Social login -->
-                        <p>or sign in with:</p>
-
-                        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                        @*<a href="#" class="mx-1" role="button"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="mx-1" role="button"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="mx-1" role="button"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="mx-1" role="button"><i class="fab fa-github"></i></a>*@
-
-                        <!-- Default form login -->
                     }
                 </div>
-                <!--Grid column-->
             </div>
-            <!--Grid row-->
-
         </section>
-        <!--Section: Content-->
     </div>
 </main>
 @section Scripts {

@@ -12,9 +12,9 @@
     }*@
 
 <div class="p-2">
-    <h2>@ViewBag.Title</h2>
+    <h2 class="text-center">@ViewBag.Title</h2>
     <p class="row">
-        <button id="toggleCategoryCreate" class="btn btn-primary text-right pull left">Add New</button>
+        <button id="toggleCategoryCreate" class="btn btn-info text-right pull left">Add a Category</button>
         @*@Html.ActionLink("Create New", "Create")*@
     </p>
     <div id="CategoryCreate">@Html.Partial("AjaxCreate", new StoreFront.DATA.EF.Category())</div>
@@ -29,7 +29,7 @@
         {
             <tr id="Category-@item.CategoryID">
                 <td>
-                    <a href="@Url.Action("Edit", "Categories", new { id = item.CategoryID })">@Html.DisplayFor(modelItem => item.CategoryName)</a>
+                    <a href="@Url.Action("Edit", "Categories", new { id = item.CategoryID})">@item.CategoryName</a>
                 </td>
                 <td>
                     <a href="@Url.Action("Details", "Categories", new { id = item.CategoryID})">@item.Products.Count()</a>
@@ -37,10 +37,10 @@
                 <td>
                     @Ajax.ActionLink("Delete", "AjaxDelete", "Categories", new { id = item.CategoryID}, new AjaxOptions {
                         HttpMethod = "POST",
-                        Confirm = $"Are you sure you want to delete {item.CategoryName} from the Categories table?",
+                        Confirm = $"Are you sure you want to delete {item.CategoryName}?",
                         OnSuccess = "deleteConfirmed",
                         OnFailure = "deleteFailed",
-                    } ) |
+                    } ) 
 
                     @*<a href="@Url.Action("Delete", "Categories", new { id = item.CategoryID })"><i class='fas fa-trash-alt'></i></a>*@
                 </td>

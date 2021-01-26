@@ -9,7 +9,7 @@
     <div class="col-md-8">
         <p>
             @(Model.HasPassword ? Html.ActionLink("Change your password", "ChangePassword")
-                        : Html.ActionLink("Pick a password", "SetPassword"))
+                                : Html.ActionLink("Pick a password", "SetPassword"))
         </p>
         <p>
             Phone Number: @(Model.PhoneNumber ?? "None") [
@@ -25,10 +25,12 @@
             }
             ]
         </p>
-        <p>
+        @*<p>
             External Logins: @Model.Logins.Count
             @Html.ActionLink("[Manage]", "ManageLogins")
-        </p>
+        </p>*@
+
+        @* Two-Factor Authentication *@
         @if (Model.TwoFactor)
         {
             using (Html.BeginForm("DisableTFA", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -36,7 +38,7 @@
                 @Html.AntiForgeryToken()
                 <p>
                     Two factor is currently enabled:
-                    <input type="submit" value="Disable" class="btn btn-primary" />
+                    <input type="submit" value="Disable" class="btn btn-info" />
                 </p>
             }
         }
@@ -47,10 +49,12 @@
                 @Html.AntiForgeryToken()
                 <p>
                     Two factor is currently disabled:
-                    <input type="submit" value="Enable" class="btn btn-primary" />
+                    <input type="submit" value="Enable" class="btn btn-info" />
                 </p>
             }
         }
+
+        @* Remember Browser *@
         @if (Model.BrowserRemembered)
         {
             using (Html.BeginForm("ForgetBrowser", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -58,7 +62,7 @@
                 @Html.AntiForgeryToken()
                 <p>
                     Browser is curently remembered for two factor:
-                    <input type="submit" value="Forget Browser" class="btn btn-primary" />
+                    <input type="submit" value="Forget Browser" class="btn btn-info" />
                 </p>
             }
         }
@@ -69,7 +73,7 @@
                 @Html.AntiForgeryToken()
                 <p>
                     Browser is curently not remembered for two factor:
-                    <input type="submit" value="Remember Browser" class="btn btn-primary" />
+                    <input type="submit" value="Remember Browser" class="btn btn-info" />
                 </p>
             }
         }

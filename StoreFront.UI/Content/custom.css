@@ -3,6 +3,10 @@
    /* padding-bottom: 4em;*/
 }
 
+button a{
+    color: white;
+}
+
 /* fixed top & fixed bottom */
 .fixed-padding {
     padding-top: 5em;
@@ -39,6 +43,13 @@ navbar nav {
             font-weight: bold;
         }
 /* End Admin Nav */
+
+/* Footer */
+footer {
+    background-color: white;
+
+}
+/* End Footer */
 
 /* Jumbotron CSS */
 .slide1 {
