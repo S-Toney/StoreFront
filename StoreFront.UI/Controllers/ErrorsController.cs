@@ -60,5 +60,10 @@ namespace StoreFront.UI.Controllers
         {
             return View();
         }
+
+        public ActionResult Undeliverable()
+        {
+            return View();
+        }
     }
 }

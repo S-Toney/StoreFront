@@ -129,6 +129,17 @@ footer {
 
 /*  Custom Error Bad Request  */
 
+/*  Custom Error Undeliverable  */
+#ReturnToSender {
+    background-image: url('img/returnToSender.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    background-position-y: center;
+    color: black;
+}
+/*  Custom Error Undeliverable  */
+
 /* Product Cards */
 .p-card {
     min-width: 200px;

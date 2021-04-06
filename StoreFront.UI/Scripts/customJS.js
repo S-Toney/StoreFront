@@ -69,3 +69,18 @@ typewriter.typeString("Please check")
 .pauseFor(700)
 .typeString('.')
 .start();
+
+//Custom Error Page Undeliverable
+var undeliverable = document.getElementById('undeliverable');
+var typewriter = new Typewriter(undeliverable, {
+    loop: false
+});
+
+typewriter.typeString("The postman can't read your handwriting.")
+.pauseFor(700)
+.typeString('Type your message here')
+.pauseFor(700)
+//.typeString('.')
+//.pauseFor(700)
+//.typeString('.')
+.start();
