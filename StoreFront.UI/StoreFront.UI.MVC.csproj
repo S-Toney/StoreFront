@@ -287,7 +287,7 @@
     <Content Include="Content\img\remarkableCover.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\img\returnToSender.jpg" />
+    <Content Include="Content\img\returnToSender.png" />
     <Content Include="Content\img\richard-dykes-SPuHHjbSso8-unsplash.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

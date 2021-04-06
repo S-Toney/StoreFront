@@ -131,12 +131,13 @@ footer {
 
 /*  Custom Error Undeliverable  */
 #ReturnToSender {
-    background-image: url('img/returnToSender.jpg');
+    background-image: url('img/returnToSender.png');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position-x: center;
     background-position-y: center;
     color: black;
+    height: 1200px;
 }
 /*  Custom Error Undeliverable  */
 
