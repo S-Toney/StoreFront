@@ -34,8 +34,10 @@ namespace StoreFront.UI.MVC
                       "~/Content/bootstrap.css",
                       "~/Content/mdb.min.css",
                       "~/Content/css/jquery.dataTables.min.css",
-                      "~/Content/site.css",
+                      "~/Content/Site.css",
                       "~/Content/custom.css"));
+
+            BundleTable.EnableOptimizations = false;
         }
     }
 }
