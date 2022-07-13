@@ -78,8 +78,8 @@ var typewriter = new Typewriter(undeliverable, {
 
 typewriter.typeString("The postman can't read your handwriting.")
 .pauseFor(700)
-.typeString('Click here to send your message.')
-.pauseFor(700)
+//.typeString('Click here to send your message.')
+//.pauseFor(700)
 //.typeString('.')
 //.pauseFor(700)
 //.typeString('.')

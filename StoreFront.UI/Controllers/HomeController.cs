@@ -77,8 +77,9 @@ namespace StoreFront.UI.MVC.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.ErrorMessage = $"Sorry, something went wrong. Error Message: {ex.Message}<br />{ex.StackTrace}";
-                return View(cvm);
+                //ViewBag.ErrorMessage = $"Sorry, something went wrong. Error Message: {ex.Message}<br />{ex.StackTrace}";
+                //return View(cvm);
+                return RedirectToAction("Undeliverable", "Errors");
             }
 
             return View("EmailConfirmation", cvm);
