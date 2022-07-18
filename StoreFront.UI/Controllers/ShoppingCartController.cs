@@ -51,5 +51,14 @@ namespace StoreFront.UI.Controllers
 
             return RedirectToAction("Index");
         }
+
+        /*  Session Information  
+            Set the expire timeout for the session*/
+        //Session.Timeout = 30;
+        /*  Configure the notification to automatically show 1 min before session expiration  */
+        //RadNotification1.ShowInterval = (Session.Timeoug - 1) * 60 * 1000;
+        /*  Set the redirect url as a value for an easier and faster extraction in the client  */
+        //RadNotification.Value = Page.ResolveClientUrl(DataCommon.GetPathForURL() + "custom error page location"
+
     }
 }
